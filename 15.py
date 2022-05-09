@@ -121,8 +121,8 @@ async def main():
         cur.execute(command, (int(message.from_user.id), 0, 0, 0, 0, 0))
         command = f"""INSERT INTO Task26 VALUES(?, ?, ?, ?, ?, ?);"""
         cur.execute(command, (int(message.from_user.id), 0, 0, 0, 0, 0))
-        command = f"""INSERT INTO Task27 VALUES(?, ?, ?, ?, ?, ?);"""
-        cur.execute(command, (int(message.from_user.id), 0, 0, 0, 0, 0))
+        command = f"""INSERT INTO Task27 VALUES(?, ?, ?, ?);"""
+        cur.execute(command, (int(message.from_user.id), 0, 0, 0))
         con.commit()
         bot.send_message(message.chat.id, f"Добро пожаловать, <b><u>{message.from_user.username}</u></b>!",
                          parse_mode='html',
