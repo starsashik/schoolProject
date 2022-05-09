@@ -26,7 +26,6 @@ async def main():
     result = cur.execute(command).fetchall()
     cur.close()
     dd = {i[0]: False for i in result}
-    print(dd)
 
     @bot.message_handler(commands=["start"])
     def start(message):
@@ -275,6 +274,65 @@ async def main():
         bot.delete_message(message.chat.id, message.message_id - 2)
         bot.delete_message(message.chat.id, message.message_id)
 
+    @bot.message_handler(commands=['profile'])
+    def prof(message):
+        try:
+            current = dd[int(message.from_user.id)]
+            if current:
+                con = sqlite3.connect(db_name)
+                cur = con.cursor()
+                command = f"""Select User.id, Task1.Total, Task2.Total, Task3.Total, Task4.Total, Task5.Total, 
+Task6.Total, Task7.Total, Task8.Total, Task9.Total, Task10.Total, Task11.Total, Task12.Total, Task13.Total, 
+Task14.Total, Task15.Total, Task16.Total, Task17.Total, Task18.Total, Task19.Total, Task20.Total,Task21.Total, 
+Task22.Total, Task23.Total, Task24.Total, Task25.Total, Task26.Total, Task27.Total FROM User,Task1,Task2,Task3,Task4,
+Task5,Task6,Task7,Task8,Task9,Task10,Task11,Task12,Task13,Task14,Task15,Task16,Task17,Task18,Task19,Task20,Task21,Task22,
+Task23,Task24,Task25,Task26,Task27 WHERE User.id = {int(message.from_user.id)}"""
+                result = cur.execute(command).fetchall()
+                cur.close()
+                bot.send_message(message.chat.id,
+                                 f"<b>{message.from_user.username}: {message.from_user.first_name} "
+                                 f"{message.from_user.last_name if message.from_user.last_name is not None else ''}"
+                                 f"</b>\n Анализ информационных моделей - {result[0][1]}%\n"
+                                 f"Построение таблиц истинности логических выражений - {result[0][2]}%\n"
+                                 f"Поиск информации в реляционных базах данных - {result[0][3]}%\n"
+                                 f"Кодирование и декодирование информации - {result[0][4]}%\n"
+                                 f"Анализ и построение алгоритмов для исполнителей - {result[0][5]}%\n"
+                                 f"Анализ программ - {result[0][6]}%\n"
+                                 f"Кодирование и декодирование информации. Передача информации - {result[0][7]}%\n"
+                                 f"Перебор слов и системы счисления - {result[0][8]}%\n"
+                                 f"Работа с таблицами - {result[0][9]}%\n"
+                                 f"Поиск символов в текстовом редакторе - {result[0][10]}%\n"
+                                 f"Вычисление количества информации - {result[0][11]}%\n"
+                                 f"Выполнение алгоритмов для исполнителей - {result[0][12]}%\n"
+                                 f"Поиск путей в графе - {result[0][13]}%\n"
+                                 f"Кодирование чисел. Системы счисления - {result[0][14]}%\n"
+                                 f"Преобразование логических выражений - {result[0][15]}%\n"
+                                 f"Рекурсивные алгоритмы - {result[0][16]}%\n"
+                                 f"Обработки числовой последовательности - {result[0][17]}%\n"
+                                 f"Робот-сборщик монет - {result[0][18]}%\n"
+                                 f"Выигрышная стратегия. Задание 1 - {result[0][19]}%\n"
+                                 f"Выигрышная стратегия. Задание 2 - {result[0][20]}%\n"
+                                 f"Выигрышная стратегия. Задание 3 - {result[0][21]}%\n"
+                                 f"Анализ программы с циклами и условными операторами - {result[0][22]}%\n"
+                                 f"Оператор присваивания и ветвления. Перебор вариантов, построение дерева - "
+                                 f"{result[0][23]}%\nОбработка символьных строк - {result[0][24]}%\n"
+                                 f"Обработка целочисленной информации - {result[0][25]}%\n"
+                                 f"Обработка целочисленной информации - {result[0][26]}%\n"
+                                 f"Программирование - {result[0][27]}%\n"
+                                 f"Всего выполнено: {str(round(sum(result[1:]) / 27 * 100))}%",
+                                 reply_markup=login_markup, parse_mode='html')
+            else:
+                bot.send_message(message.chat.id,
+                                 f"<b><u>{message.from_user.username}</u></b> чтобы посмотреть свой профиль "
+                                 f"залогинтесь\n "
+                                 f"/logIn",
+                                 reply_markup=start_markup, parse_mode='html')
+
+        except KeyError:
+            bot.send_message(message.chat.id, f"У вас еще нет профиля, сначала зарегистрируйтесь.\n"
+                                              f"Для регистрации воспользуйтесь функцией /registration",
+                             reply_markup=start_markup)
+
     @bot.message_handler(content_types=['text'])
     def teat(message):
         try:
@@ -291,6 +349,15 @@ async def main():
         except KeyError:
             bot.send_message(message.chat.id, f"/start",
                              reply_markup=start_markup)
+
+    @bot.message_handler(content_types='sticker')
+    def fff(message):
+        bot.send_sticker(message.chat.id, message.sticker.file_id)
+        bot.send_message(message.chat.id, message.sticker.emoji)
+
+    @bot.message_handler(content_types='photo')
+    def ff(message):
+        bot.send_message(message.chat.id, message)
 
     bot.polling(none_stop=True)
 
