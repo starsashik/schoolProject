@@ -45,6 +45,7 @@ async def main():
     result = cur.execute(command).fetchall()
     cur.close()
     dd = {i[0]: False for i in result}
+    print(dd)
 
     @bot.message_handler(commands=["start"])
     def start(message):
@@ -63,6 +64,10 @@ async def main():
     @bot.message_handler(commands=['close'])
     def close(message):
         bot.send_message(message.chat.id, "Клавиатура скрыта", reply_markup=telebot.types.ReplyKeyboardRemove())
+
+    @bot.message_handler(commands=['back'])
+    def bacc(message):
+        bot.send_message(message.chat.id, "Вы вернулись в меню заданий", reply_markup=login_markup, parse_mode='html')
 
     @bot.message_handler(commands=["registration"])
     def reg1(message):
@@ -338,7 +343,7 @@ Task23,Task24,Task25,Task26,Task27 WHERE User.id = {int(message.from_user.id)}""
                                  f"Обработка целочисленной информации - {result[0][25]}%\n"
                                  f"Обработка целочисленной информации - {result[0][26]}%\n"
                                  f"Программирование - {result[0][27]}%\n"
-                                 f"Всего выполнено: {str(round(sum(result[0][1:]) / 27 * 100))}%",
+                                 f"Всего выполнено: {str(round(sum(result[0][1:]) / 27))}%",
                                  reply_markup=login_markup, parse_mode='html')
             else:
                 bot.send_message(message.chat.id,
@@ -363,7 +368,7 @@ Task23,Task24,Task25,Task26,Task27 WHERE User.id = {int(message.from_user.id)}""
             else:
                 bot.send_message(message.chat.id,
                                  f"<b><u>{message.from_user.username}</u></b>, войдите в свой аккаунт "
-                                 f"для решения заданий.",
+                                 f"для решения заданий. /logIn",
                                  reply_markup=start_markup, parse_mode='html')
 
         except KeyError:
@@ -382,7 +387,7 @@ Task23,Task24,Task25,Task26,Task27 WHERE User.id = {int(message.from_user.id)}""
             else:
                 bot.send_message(message.chat.id,
                                  f"<b><u>{message.from_user.username}</u></b>, войдите в свой аккаунт "
-                                 f"для решения заданий.",
+                                 f"для решения заданий. /logIn",
                                  reply_markup=start_markup, parse_mode='html')
 
         except KeyError:
@@ -401,7 +406,7 @@ Task23,Task24,Task25,Task26,Task27 WHERE User.id = {int(message.from_user.id)}""
             else:
                 bot.send_message(message.chat.id,
                                  f"<b><u>{message.from_user.username}</u></b>, войдите в свой аккаунт "
-                                 f"для решения заданий.",
+                                 f"для решения заданий. /logIn",
                                  reply_markup=start_markup, parse_mode='html')
 
         except KeyError:
@@ -420,7 +425,7 @@ Task23,Task24,Task25,Task26,Task27 WHERE User.id = {int(message.from_user.id)}""
             else:
                 bot.send_message(message.chat.id,
                                  f"<b><u>{message.from_user.username}</u></b>, войдите в свой аккаунт "
-                                 f"для решения заданий.",
+                                 f"для решения заданий. /logIn",
                                  reply_markup=start_markup, parse_mode='html')
 
         except KeyError:
@@ -439,7 +444,7 @@ Task23,Task24,Task25,Task26,Task27 WHERE User.id = {int(message.from_user.id)}""
             else:
                 bot.send_message(message.chat.id,
                                  f"<b><u>{message.from_user.username}</u></b>, войдите в свой аккаунт "
-                                 f"для решения заданий.",
+                                 f"для решения заданий. /logIn",
                                  reply_markup=start_markup, parse_mode='html')
 
         except KeyError:
@@ -458,7 +463,7 @@ Task23,Task24,Task25,Task26,Task27 WHERE User.id = {int(message.from_user.id)}""
             else:
                 bot.send_message(message.chat.id,
                                  f"<b><u>{message.from_user.username}</u></b>, войдите в свой аккаунт "
-                                 f"для решения заданий.",
+                                 f"для решения заданий. /logIn",
                                  reply_markup=start_markup, parse_mode='html')
 
         except KeyError:
@@ -482,7 +487,7 @@ Task23,Task24,Task25,Task26,Task27 WHERE User.id = {int(message.from_user.id)}""
             else:
                 bot.send_message(message.chat.id,
                                  f"<b><u>{message.from_user.username}</u></b>, войдите в свой аккаунт "
-                                 f"для решения заданий.",
+                                 f"для решения заданий. /logIn",
                                  reply_markup=start_markup, parse_mode='html')
 
         except KeyError:
@@ -507,7 +512,7 @@ Task23,Task24,Task25,Task26,Task27 WHERE User.id = {int(message.from_user.id)}""
             else:
                 bot.send_message(message.chat.id,
                                  f"<b><u>{message.from_user.username}</u></b>, войдите в свой аккаунт "
-                                 f"для решения заданий.",
+                                 f"для решения заданий. /logIn",
                                  reply_markup=start_markup, parse_mode='html')
 
         except KeyError:
@@ -530,7 +535,7 @@ Task23,Task24,Task25,Task26,Task27 WHERE User.id = {int(message.from_user.id)}""
             else:
                 bot.send_message(message.chat.id,
                                  f"<b><u>{message.from_user.username}</u></b>, войдите в свой аккаунт "
-                                 f"для решения заданий.",
+                                 f"для решения заданий. /logIn",
                                  reply_markup=start_markup, parse_mode='html')
 
         except KeyError:
@@ -556,7 +561,7 @@ Task23,Task24,Task25,Task26,Task27 WHERE User.id = {int(message.from_user.id)}""
             else:
                 bot.send_message(message.chat.id,
                                  f"<b><u>{message.from_user.username}</u></b>, войдите в свой аккаунт "
-                                 f"для решения заданий.",
+                                 f"для решения заданий. /logIn",
                                  reply_markup=start_markup, parse_mode='html')
 
         except KeyError:
@@ -583,7 +588,7 @@ Task23,Task24,Task25,Task26,Task27 WHERE User.id = {int(message.from_user.id)}""
             else:
                 bot.send_message(message.chat.id,
                                  f"<b><u>{message.from_user.username}</u></b>, войдите в свой аккаунт "
-                                 f"для решения заданий.",
+                                 f"для решения заданий. /logIn",
                                  reply_markup=start_markup, parse_mode='html')
 
         except KeyError:
@@ -608,7 +613,7 @@ Task23,Task24,Task25,Task26,Task27 WHERE User.id = {int(message.from_user.id)}""
             else:
                 bot.send_message(message.chat.id,
                                  f"<b><u>{message.from_user.username}</u></b>, войдите в свой аккаунт "
-                                 f"для решения заданий.",
+                                 f"для решения заданий. /logIn",
                                  reply_markup=start_markup, parse_mode='html')
 
         except KeyError:
@@ -637,7 +642,7 @@ Task23,Task24,Task25,Task26,Task27 WHERE User.id = {int(message.from_user.id)}""
             else:
                 bot.send_message(message.chat.id,
                                  f"<b><u>{message.from_user.username}</u></b>, войдите в свой аккаунт "
-                                 f"для решения заданий.",
+                                 f"для решения заданий. /logIn",
                                  reply_markup=start_markup, parse_mode='html')
 
         except KeyError:
@@ -666,7 +671,7 @@ Task23,Task24,Task25,Task26,Task27 WHERE User.id = {int(message.from_user.id)}""
             else:
                 bot.send_message(message.chat.id,
                                  f"<b><u>{message.from_user.username}</u></b>, войдите в свой аккаунт "
-                                 f"для решения заданий.",
+                                 f"для решения заданий. /logIn",
                                  reply_markup=start_markup, parse_mode='html')
 
         except KeyError:
@@ -690,7 +695,7 @@ Task23,Task24,Task25,Task26,Task27 WHERE User.id = {int(message.from_user.id)}""
             else:
                 bot.send_message(message.chat.id,
                                  f"<b><u>{message.from_user.username}</u></b>, войдите в свой аккаунт "
-                                 f"для решения заданий.",
+                                 f"для решения заданий. /logIn",
                                  reply_markup=start_markup, parse_mode='html')
 
         except KeyError:
@@ -714,7 +719,7 @@ Task23,Task24,Task25,Task26,Task27 WHERE User.id = {int(message.from_user.id)}""
             else:
                 bot.send_message(message.chat.id,
                                  f"<b><u>{message.from_user.username}</u></b>, войдите в свой аккаунт "
-                                 f"для решения заданий.",
+                                 f"для решения заданий. /logIn",
                                  reply_markup=start_markup, parse_mode='html')
 
         except KeyError:
@@ -740,7 +745,7 @@ Task23,Task24,Task25,Task26,Task27 WHERE User.id = {int(message.from_user.id)}""
             else:
                 bot.send_message(message.chat.id,
                                  f"<b><u>{message.from_user.username}</u></b>, войдите в свой аккаунт "
-                                 f"для решения заданий.",
+                                 f"для решения заданий. /logIn",
                                  reply_markup=start_markup, parse_mode='html')
 
         except KeyError:
@@ -770,7 +775,7 @@ Task23,Task24,Task25,Task26,Task27 WHERE User.id = {int(message.from_user.id)}""
             else:
                 bot.send_message(message.chat.id,
                                  f"<b><u>{message.from_user.username}</u></b>, войдите в свой аккаунт "
-                                 f"для решения заданий.",
+                                 f"для решения заданий. /logIn",
                                  reply_markup=start_markup, parse_mode='html')
 
         except KeyError:
@@ -796,7 +801,7 @@ Task23,Task24,Task25,Task26,Task27 WHERE User.id = {int(message.from_user.id)}""
             else:
                 bot.send_message(message.chat.id,
                                  f"<b><u>{message.from_user.username}</u></b>, войдите в свой аккаунт "
-                                 f"для решения заданий.",
+                                 f"для решения заданий. /logIn",
                                  reply_markup=start_markup, parse_mode='html')
 
         except KeyError:
@@ -821,7 +826,7 @@ Task23,Task24,Task25,Task26,Task27 WHERE User.id = {int(message.from_user.id)}""
             else:
                 bot.send_message(message.chat.id,
                                  f"<b><u>{message.from_user.username}</u></b>, войдите в свой аккаунт "
-                                 f"для решения заданий.",
+                                 f"для решения заданий. /logIn",
                                  reply_markup=start_markup, parse_mode='html')
 
         except KeyError:
@@ -847,7 +852,7 @@ Task23,Task24,Task25,Task26,Task27 WHERE User.id = {int(message.from_user.id)}""
             else:
                 bot.send_message(message.chat.id,
                                  f"<b><u>{message.from_user.username}</u></b>, войдите в свой аккаунт "
-                                 f"для решения заданий.",
+                                 f"для решения заданий. /logIn",
                                  reply_markup=start_markup, parse_mode='html')
 
         except KeyError:
@@ -879,7 +884,7 @@ Task23,Task24,Task25,Task26,Task27 WHERE User.id = {int(message.from_user.id)}""
             else:
                 bot.send_message(message.chat.id,
                                  f"<b><u>{message.from_user.username}</u></b>, войдите в свой аккаунт "
-                                 f"для решения заданий.",
+                                 f"для решения заданий. /logIn",
                                  reply_markup=start_markup, parse_mode='html')
 
         except KeyError:
@@ -902,7 +907,7 @@ Task23,Task24,Task25,Task26,Task27 WHERE User.id = {int(message.from_user.id)}""
             else:
                 bot.send_message(message.chat.id,
                                  f"<b><u>{message.from_user.username}</u></b>, войдите в свой аккаунт "
-                                 f"для решения заданий.",
+                                 f"для решения заданий. /logIn",
                                  reply_markup=start_markup, parse_mode='html')
 
         except KeyError:
@@ -925,7 +930,7 @@ Task23,Task24,Task25,Task26,Task27 WHERE User.id = {int(message.from_user.id)}""
             else:
                 bot.send_message(message.chat.id,
                                  f"<b><u>{message.from_user.username}</u></b>, войдите в свой аккаунт "
-                                 f"для решения заданий.",
+                                 f"для решения заданий. /logIn",
                                  reply_markup=start_markup, parse_mode='html')
 
         except KeyError:
@@ -948,7 +953,7 @@ Task23,Task24,Task25,Task26,Task27 WHERE User.id = {int(message.from_user.id)}""
             else:
                 bot.send_message(message.chat.id,
                                  f"<b><u>{message.from_user.username}</u></b>, войдите в свой аккаунт "
-                                 f"для решения заданий.",
+                                 f"для решения заданий. /logIn",
                                  reply_markup=start_markup, parse_mode='html')
 
         except KeyError:
@@ -971,7 +976,7 @@ Task23,Task24,Task25,Task26,Task27 WHERE User.id = {int(message.from_user.id)}""
             else:
                 bot.send_message(message.chat.id,
                                  f"<b><u>{message.from_user.username}</u></b>, войдите в свой аккаунт "
-                                 f"для решения заданий.",
+                                 f"для решения заданий. /logIn",
                                  reply_markup=start_markup, parse_mode='html')
 
         except KeyError:
@@ -994,7 +999,7 @@ Task23,Task24,Task25,Task26,Task27 WHERE User.id = {int(message.from_user.id)}""
             else:
                 bot.send_message(message.chat.id,
                                  f"<b><u>{message.from_user.username}</u></b>, войдите в свой аккаунт "
-                                 f"для решения заданий.",
+                                 f"для решения заданий. /logIn",
                                  reply_markup=start_markup, parse_mode='html')
 
         except KeyError:
@@ -1019,7 +1024,7 @@ Task23,Task24,Task25,Task26,Task27 WHERE User.id = {int(message.from_user.id)}""
             else:
                 bot.send_message(message.chat.id,
                                  f"<b><u>{message.from_user.username}</u></b>, войдите в свой аккаунт "
-                                 f"для решения заданий.",
+                                 f"для решения заданий. /logIn",
                                  reply_markup=start_markup, parse_mode='html')
 
         except KeyError:
@@ -1049,7 +1054,7 @@ Task23,Task24,Task25,Task26,Task27 WHERE User.id = {int(message.from_user.id)}""
             else:
                 bot.send_message(message.chat.id,
                                  f"<b><u>{message.from_user.username}</u></b>, войдите в свой аккаунт "
-                                 f"для решения заданий.",
+                                 f"для решения заданий. /logIn",
                                  reply_markup=start_markup, parse_mode='html')
 
         except KeyError:
@@ -1074,7 +1079,7 @@ Task23,Task24,Task25,Task26,Task27 WHERE User.id = {int(message.from_user.id)}""
             else:
                 bot.send_message(message.chat.id,
                                  f"<b><u>{message.from_user.username}</u></b>, войдите в свой аккаунт "
-                                 f"для решения заданий.",
+                                 f"для решения заданий. /logIn",
                                  reply_markup=start_markup, parse_mode='html')
 
         except KeyError:
@@ -1099,7 +1104,7 @@ Task23,Task24,Task25,Task26,Task27 WHERE User.id = {int(message.from_user.id)}""
             else:
                 bot.send_message(message.chat.id,
                                  f"<b><u>{message.from_user.username}</u></b>, войдите в свой аккаунт "
-                                 f"для решения заданий.",
+                                 f"для решения заданий. /logIn",
                                  reply_markup=start_markup, parse_mode='html')
 
         except KeyError:
@@ -1124,7 +1129,7 @@ Task23,Task24,Task25,Task26,Task27 WHERE User.id = {int(message.from_user.id)}""
             else:
                 bot.send_message(message.chat.id,
                                  f"<b><u>{message.from_user.username}</u></b>, войдите в свой аккаунт "
-                                 f"для решения заданий.",
+                                 f"для решения заданий. /logIn",
                                  reply_markup=start_markup, parse_mode='html')
 
         except KeyError:
@@ -1147,7 +1152,7 @@ Task23,Task24,Task25,Task26,Task27 WHERE User.id = {int(message.from_user.id)}""
             else:
                 bot.send_message(message.chat.id,
                                  f"<b><u>{message.from_user.username}</u></b>, войдите в свой аккаунт "
-                                 f"для решения заданий.",
+                                 f"для решения заданий. /logIn",
                                  reply_markup=start_markup, parse_mode='html')
 
         except KeyError:
@@ -1156,7 +1161,7 @@ Task23,Task24,Task25,Task26,Task27 WHERE User.id = {int(message.from_user.id)}""
                              reply_markup=start_markup)
 
     @bot.message_handler(content_types=['text'])
-    def teat(message):
+    def tekst(message):
         try:
             current = dd[int(message.from_user.id)]
             if current:
@@ -1172,246 +1177,690 @@ Task23,Task24,Task25,Task26,Task27 WHERE User.id = {int(message.from_user.id)}""
             bot.send_message(message.chat.id, f"/start",
                              reply_markup=start_markup)
 
+    def t1_1A(message):
+        with open("tmp/Task1/1/answer", encoding='utf8') as f:
+            d = f.read().split()[0]
+        if message.text == d:
+            con = sqlite3.connect(db_name)
+            cur = con.cursor()
+            command = f"""UPDATE "Task1" SET "1" = '1' WHERE id = {int(message.from_user.id)}"""
+            cur.execute(command)
+            con.commit()
+            cur.close()
+            t1_up(int(message.from_user.id))
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы правильно решили задачу\n"
+                             f"Ваш результат учтен",
+                             reply_markup=task1_markup, parse_mode='html')
+        else:
+            mi1 = types.InlineKeyboardMarkup()
+            i1 = types.InlineKeyboardButton(text='Решение', callback_data="t1_1R")
+            mi1.add(i1)
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы ответили <b>неверно</b>.\n"
+                             f"Можете посмотреть решение",
+                             reply_markup=mi1, parse_mode='html')
+
+    def t1_2A(message):
+        with open("tmp/Task1/2/answer", encoding='utf8') as f:
+            d = f.read().split()[0]
+        if message.text == d:
+            con = sqlite3.connect(db_name)
+            cur = con.cursor()
+            command = f"""UPDATE "Task1" SET "2" = '1' WHERE id = {int(message.from_user.id)}"""
+            cur.execute(command)
+            con.commit()
+            cur.close()
+            t1_up(int(message.from_user.id))
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы правильно решили задачу\n"
+                             f"Ваш результат учтен",
+                             reply_markup=task1_markup, parse_mode='html')
+        else:
+            mi1 = types.InlineKeyboardMarkup()
+            i1 = types.InlineKeyboardButton(text='Решение', callback_data="t1_2R")
+            mi1.add(i1)
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы ответили <b>неверно</b>.\n"
+                             f"Можете посмотреть решение",
+                             reply_markup=mi1, parse_mode='html')
+
+    def t1_3A(message):
+        with open("tmp/Task1/3/answer", encoding='utf8') as f:
+            d = f.read().split()[0]
+        if message.text == d:
+            con = sqlite3.connect(db_name)
+            cur = con.cursor()
+            command = f"""UPDATE "Task1" SET "3" = '1' WHERE id = {int(message.from_user.id)}"""
+            cur.execute(command)
+            con.commit()
+            cur.close()
+            t1_up(int(message.from_user.id))
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы правильно решили задачу\n"
+                             f"Ваш результат учтен",
+                             reply_markup=task1_markup, parse_mode='html')
+        else:
+            mi1 = types.InlineKeyboardMarkup()
+            i1 = types.InlineKeyboardButton(text='Решение', callback_data="t1_3R")
+            mi1.add(i1)
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы ответили <b>неверно</b>.\n"
+                             f"Можете посмотреть решение",
+                             reply_markup=mi1, parse_mode='html')
+
+    def t1_up(idd):
+        con = sqlite3.connect(db_name)
+        cur = con.cursor()
+        command = f"""Select * from Task1 WHERE id = {idd}"""
+        result = cur.execute(command).fetchall()
+        curent = round(sum(result[0][1:4]) / 3 * 100)
+        command = f"""UPDATE "Task1" SET "Total" = {curent} WHERE id = {idd}"""
+        cur.execute(command)
+        con.commit()
+        cur.close()
+
+    def t2_1A(message):
+        with open("tmp/Task2/1/answer", encoding='utf8') as f:
+            d = f.read().split()[0]
+        if message.text == d:
+            con = sqlite3.connect(db_name)
+            cur = con.cursor()
+            command = f"""UPDATE "Task2" SET "1" = '1' WHERE id = {int(message.from_user.id)}"""
+            cur.execute(command)
+            con.commit()
+            cur.close()
+            t2_up(int(message.from_user.id))
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы правильно решили задачу\n"
+                             f"Ваш результат учтен",
+                             reply_markup=task1_markup, parse_mode='html')
+        else:
+            mi1 = types.InlineKeyboardMarkup()
+            i1 = types.InlineKeyboardButton(text='Решение', callback_data="t2_1R")
+            mi1.add(i1)
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы ответили <b>неверно</b>.\n"
+                             f"Можете посмотреть решение",
+                             reply_markup=mi1, parse_mode='html')
+
+    def t2_2A(message):
+        with open("tmp/Task2/2/answer", encoding='utf8') as f:
+            d = f.read().split()[0]
+        if message.text == d:
+            con = sqlite3.connect(db_name)
+            cur = con.cursor()
+            command = f"""UPDATE "Task2" SET "2" = '1' WHERE id = {int(message.from_user.id)}"""
+            cur.execute(command)
+            con.commit()
+            cur.close()
+            t2_up(int(message.from_user.id))
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы правильно решили задачу\n"
+                             f"Ваш результат учтен",
+                             reply_markup=task1_markup, parse_mode='html')
+        else:
+            mi1 = types.InlineKeyboardMarkup()
+            i1 = types.InlineKeyboardButton(text='Решение', callback_data="t2_2R")
+            mi1.add(i1)
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы ответили <b>неверно</b>.\n"
+                             f"Можете посмотреть решение",
+                             reply_markup=mi1, parse_mode='html')
+
+    def t2_3A(message):
+        with open("tmp/Task2/3/answer", encoding='utf8') as f:
+            d = f.read().split()[0]
+        if message.text == d:
+            con = sqlite3.connect(db_name)
+            cur = con.cursor()
+            command = f"""UPDATE "Task2" SET "3" = '1' WHERE id = {int(message.from_user.id)}"""
+            cur.execute(command)
+            con.commit()
+            cur.close()
+            t2_up(int(message.from_user.id))
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы правильно решили задачу\n"
+                             f"Ваш результат учтен",
+                             reply_markup=task1_markup, parse_mode='html')
+        else:
+            mi1 = types.InlineKeyboardMarkup()
+            i1 = types.InlineKeyboardButton(text='Решение', callback_data="t2_3R")
+            mi1.add(i1)
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы ответили <b>неверно</b>.\n"
+                             f"Можете посмотреть решение",
+                             reply_markup=mi1, parse_mode='html')
+
+    def t2_4A(message):
+        with open("tmp/Task2/4/answer", encoding='utf8') as f:
+            d = f.read().split()[0]
+        if message.text == d:
+            con = sqlite3.connect(db_name)
+            cur = con.cursor()
+            command = f"""UPDATE "Task2" SET "4" = '1' WHERE id = {int(message.from_user.id)}"""
+            cur.execute(command)
+            con.commit()
+            cur.close()
+            t2_up(int(message.from_user.id))
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы правильно решили задачу\n"
+                             f"Ваш результат учтен",
+                             reply_markup=task1_markup, parse_mode='html')
+        else:
+            mi1 = types.InlineKeyboardMarkup()
+            i1 = types.InlineKeyboardButton(text='Решение', callback_data="t2_4R")
+            mi1.add(i1)
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы ответили <b>неверно</b>.\n"
+                             f"Можете посмотреть решение",
+                             reply_markup=mi1, parse_mode='html')
+
+    def t2_up(idd):
+        con = sqlite3.connect(db_name)
+        cur = con.cursor()
+        command = f"""Select * from Task2 WHERE id = {idd}"""
+        result = cur.execute(command).fetchall()
+        curent = round(sum(result[0][1:5]) / 4 * 100)
+        command = f"""UPDATE "Task2" SET "Total" = {curent} WHERE id = {idd}"""
+        cur.execute(command)
+        con.commit()
+        cur.close()
+
     @bot.callback_query_handler(func=lambda call: True)
     def task(call):
-        if call.data == "t1_1":
-            pass
-        elif call.data == "t1_2":
-            pass
-        elif call.data == "t1_3":
-            pass
+        idd = call.message.chat.id
+        try:
+            current = dd[int(call.from_user.id)]
+            if current:
+                if call.data == "t1_1":
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t1_1A")
+                    i2 = types.InlineKeyboardButton(text='Решение', callback_data="t1_1R")
+                    mi1.add(i1).add(i2)
+                    phot = open("tmp/Task1/1/task.png", "rb")
+                    bot.send_message(idd, f"Задание 1.1:\n<b>Неоднозначное соотнесение таблицы и графа</b>",
+                                     parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
+                if call.data == "t1_1A":
+                    tb = bot.send_message(idd,
+                                          "Ваш ответ:\n(это должно быть натуральное, "
+                                          "запишите его без лишних запятых и знаков. Например: 25)")
+                    bot.register_next_step_handler(tb, t1_1A)
+                if call.data == "t1_1R":
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t1_1A")
+                    mi1.add(i1)
+                    with open("tmp/Task1/1/answer", encoding='utf8') as f:
+                        d = f.read().split()
+                    phot = open('tmp/Task1/1/solution.png', "rb")
+                    bot.send_message(idd, f"<b>Решение</b> задания 1.1\n<b>Ответ:</b> {' '.join(d)}", parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
 
-        elif call.data == "t2_1":
-            pass
-        elif call.data == "t2_2":
-            pass
-        elif call.data == "t2_3":
-            pass
-        elif call.data == "t2_4":
-            pass
+                if call.data == "t1_2":
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t1_2A")
+                    i2 = types.InlineKeyboardButton(text='Решение', callback_data="t1_2R")
+                    mi1.add(i1).add(i2)
+                    phot = open("tmp/Task1/2/task.png", "rb")
+                    bot.send_message(idd, f"Задание 1.2:\n<b>Однозначное соотнесение таблицы и графа</b>",
+                                     parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
+                if call.data == "t1_2A":
+                    tb = bot.send_message(idd,
+                                          "Ваш ответ:\n(это должно быть натуральное, "
+                                          "запишите его без лишних запятых и знаков. Например: 25)")
+                    bot.register_next_step_handler(tb, t1_2A)
+                if call.data == "t1_2R":
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t1_2A")
+                    mi1.add(i1)
+                    with open("tmp/Task1/2/answer", encoding='utf8') as f:
+                        d = f.read().split()
+                    phot = open('tmp/Task1/2/solution.png', "rb")
+                    bot.send_message(idd, f"<b>Решение</b> задания 1.2\n<b>Ответ:</b> {' '.join(d)}", parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
 
-        elif call.data == "t3_1":
-            pass
-        elif call.data == "t3_2":
-            pass
+                if call.data == "t1_3":
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t1_3A")
+                    i2 = types.InlineKeyboardButton(text='Решение', callback_data="t1_3R")
+                    mi1.add(i1).add(i2)
+                    phot = open("tmp/Task1/3/task.png", "rb")
+                    bot.send_message(idd, f"Задание 1.3:\n<b>Поиск оптимального маршрута по таблице</b>",
+                                     parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
+                if call.data == "t1_3A":
+                    tb = bot.send_message(idd,
+                                          "Ваш ответ:\n(это должно быть натуральное, "
+                                          "запишите его без лишних запятых и знаков. Например: 25)")
+                    bot.register_next_step_handler(tb, t1_3A)
+                if call.data == "t1_3R":
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t1_3A")
+                    mi1.add(i1)
+                    with open("tmp/Task1/3/answer", encoding='utf8') as f:
+                        d = f.read().split()
+                    phot = open('tmp/Task1/3/solution.png', "rb")
+                    bot.send_message(idd, f"<b>Решение</b> задания 1.3\n<b>Ответ:</b> {' '.join(d)}", parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
 
-        elif call.data == "t4_1":
-            pass
-        elif call.data == "t4_2":
-            pass
-        elif call.data == "t4_3":
-            pass
-        elif call.data == "t4_4":
-            pass
+                if call.data == "t2_1":
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t2_1A")
+                    i2 = types.InlineKeyboardButton(text='Решение', callback_data="t2_1R")
+                    mi1.add(i1).add(i2)
+                    phot = open("tmp/Task2/1/task.png", "rb")
+                    bot.send_message(idd, f"Задание 2.1:\n<b>Монотонные функции</b>",
+                                     parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
+                if call.data == "t2_1A":
+                    tb = bot.send_message(idd,
+                                          "Ваш ответ:\n(это должен быть набор переменных, "
+                                          "запишите его без лишних запятых и знаков. Например: xyz)")
+                    bot.register_next_step_handler(tb, t2_1A)
+                if call.data == "t2_1R":
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t2_1A")
+                    mi1.add(i1)
+                    with open("tmp/Task2/1/answer", encoding='utf8') as f:
+                        d = f.read().split()
+                    phot = open('tmp/Task2/1/solution.png', "rb")
+                    bot.send_message(idd, f"<b>Решение</b> задания 2.1\n<b>Ответ:</b> {' '.join(d)}", parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
 
-        elif call.data == "t5_1":
-            pass
-        elif call.data == "t5_2":
-            pass
-        elif call.data == "t5_3":
-            pass
-        elif call.data == "t5_4":
-            pass
-        elif call.data == "t5_5":
-            pass
-        elif call.data == "t5_6":
-            pass
+                if call.data == "t2_2":
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t2_2A")
+                    i2 = types.InlineKeyboardButton(text='Решение', callback_data="t2_2R")
+                    mi1.add(i1).add(i2)
+                    phot = open("tmp/Task2/2/task.png", "rb")
+                    bot.send_message(idd, f"Задание 2.2:\n<b>Немонотонные функции</b>",
+                                     parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
+                if call.data == "t2_2A":
+                    tb = bot.send_message(idd,
+                                          "Ваш ответ:\n(это должен быть набор переменных, "
+                                          "запишите его без лишних запятых и знаков. Например: xyz)")
+                    bot.register_next_step_handler(tb, t2_2A)
+                if call.data == "t2_2R":
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t2_2A")
+                    mi1.add(i1)
+                    with open("tmp/Task2/2/answer", encoding='utf8') as f:
+                        d = f.read().split()
+                    phot = open('tmp/Task2/2/solution.png', "rb")
+                    bot.send_message(idd, f"<b>Решение</b> задания 2.2\n<b>Ответ:</b> {' '.join(d)}", parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
 
-        elif call.data == "t6_1":
-            pass
-        elif call.data == "t6_2":
-            pass
-        elif call.data == "t6_3":
-            pass
-        elif call.data == "t6_4":
-            pass
+                if call.data == "t2_3":
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t2_3A")
+                    i2 = types.InlineKeyboardButton(text='Решение', callback_data="t2_3R")
+                    mi1.add(i1).add(i2)
+                    phot = open("tmp/Task2/3/task.png", "rb")
+                    bot.send_message(idd, f"Задание 2.3:\n<b>Строки с пропущенными значениями</b>",
+                                     parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
+                if call.data == "t2_3A":
+                    tb = bot.send_message(idd,
+                                          "Ваш ответ:\n(это должен быть набор переменных, "
+                                          "запишите его без лишних запятых и знаков. Например: xyz)")
+                    bot.register_next_step_handler(tb, t2_3A)
+                if call.data == "t2_3R":
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t2_3A")
+                    mi1.add(i1)
+                    with open("tmp/Task2/3/answer", encoding='utf8') as f:
+                        d = f.read().split()
+                    phot = open('tmp/Task2/3/solution.png', "rb")
+                    bot.send_message(idd, f"<b>Решение</b> задания 2.3\n<b>Ответ:</b> {' '.join(d)}", parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
 
-        elif call.data == "t7_1":
-            pass
-        elif call.data == "t7_2":
-            pass
-        elif call.data == "t7_3":
-            pass
-        elif call.data == "t7_4":
-            pass
-        elif call.data == "t7_5":
-            pass
-        elif call.data == "t7_6":
-            pass
-        elif call.data == "t7_7":
-            pass
-        elif call.data == "t7_8":
-            pass
+                if call.data == "t2_4":
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t2_4A")
+                    i2 = types.InlineKeyboardButton(text='Решение', callback_data="t2_4R")
+                    mi1.add(i1).add(i2)
+                    phot = open("tmp/Task2/4/task.png", "rb")
+                    bot.send_message(idd, f"Задание 2.4:\n<b>Разные задачи</b>",
+                                     parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
+                if call.data == "t2_4A":
+                    tb = bot.send_message(idd,
+                                          "Ваш ответ:\n(это должно быть натуральное, "
+                                          "запишите его без лишних запятых и знаков. Например: 25)")
+                    bot.register_next_step_handler(tb, t2_4A)
+                if call.data == "t2_4R":
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t2_4A")
+                    mi1.add(i1)
+                    with open("tmp/Task2/4/answer", encoding='utf8') as f:
+                        d = f.read().split()
+                    phot = open('tmp/Task2/4/solution.png', "rb")
+                    bot.send_message(idd, f"<b>Решение</b> задания 2.4\n<b>Ответ:</b> {' '.join(d)}", parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
 
-        elif call.data == "t8_1":
-            pass
-        elif call.data == "t8_2":
-            pass
-        elif call.data == "t8_3":
-            pass
-        elif call.data == "t8_4":
-            pass
-        elif call.data == "t8_5":
-            pass
-        elif call.data == "t8_6":
-            pass
-        elif call.data == "t8_7":
-            pass
+                if call.data == "t3_1":
+                    pass
 
-        elif call.data == "t9_1":
-            pass
-        elif call.data == "t9_2":
-            pass
-        elif call.data == "t9_3":
-            pass
+                if call.data == "t3_2":
+                    pass
 
-        elif call.data == "t10_1":
-            pass
-        elif call.data == "t10_2":
-            pass
-        elif call.data == "t10_3":
-            pass
+                if call.data == "t4_1":
+                    pass
 
-        elif call.data == "t11_1":
-            pass
-        elif call.data == "t11_2":
-            pass
-        elif call.data == "t11_3":
-            pass
-        elif call.data == "t11_4":
-            pass
-        elif call.data == "t11_5":
-            pass
+                if call.data == "t4_2":
+                    pass
 
-        elif call.data == "t12_1":
-            pass
-        elif call.data == "t12_2":
-            pass
-        elif call.data == "t12_3":
-            pass
-        elif call.data == "t12_4":
-            pass
-        elif call.data == "t12_5":
-            pass
-        elif call.data == "t12_6":
-            pass
+                if call.data == "t4_3":
+                    pass
 
-        elif call.data == "t13_1":
-            pass
-        elif call.data == "t13_2":
-            pass
-        elif call.data == "t13_3":
-            pass
-        elif call.data == "t13_4":
-            pass
+                if call.data == "t4_4":
+                    pass
 
-        elif call.data == "t14_1":
-            pass
-        elif call.data == "t14_2":
-            pass
-        elif call.data == "t14_3":
-            pass
+                if call.data == "t5_1":
+                    pass
 
-        elif call.data == "t15_1":
-            pass
-        elif call.data == "t15_2":
-            pass
-        elif call.data == "t15_3":
-            pass
-        elif call.data == "t15_4":
-            pass
-        elif call.data == "t15_5":
-            pass
+                if call.data == "t5_2":
+                    pass
 
-        elif call.data == "t16_1":
-            pass
-        elif call.data == "t16_2":
-            pass
-        elif call.data == "t16_3":
-            pass
-        elif call.data == "t16_4":
-            pass
-        elif call.data == "t16_5":
-            pass
-        elif call.data == "t16_6":
-            pass
+                if call.data == "t5_3":
+                    pass
 
-        elif call.data == "t17_1":
-            pass
-        elif call.data == "t17_2":
-            pass
+                if call.data == "t5_4":
+                    pass
 
-        elif call.data == "t18_1":
-            pass
-        elif call.data == "t18_2":
-            pass
+                if call.data == "t5_5":
+                    pass
 
-        elif call.data == "t19_1":
-            pass
-        elif call.data == "t19_2":
-            pass
+                if call.data == "t5_6":
+                    pass
 
-        elif call.data == "t20_1":
-            pass
-        elif call.data == "t20_2":
-            pass
+                if call.data == "t6_1":
+                    pass
 
-        elif call.data == "t21_1":
-            pass
-        elif call.data == "t21_2":
-            pass
+                if call.data == "t6_2":
+                    pass
 
-        elif call.data == "t22_1":
-            pass
-        elif call.data == "t22_2":
-            pass
-        elif call.data == "t22_3":
-            pass
-        elif call.data == "t22_4":
-            pass
+                if call.data == "t6_3":
+                    pass
 
-        elif call.data == "t23_1":
-            pass
-        elif call.data == "t23_2":
-            pass
-        elif call.data == "t23_3":
-            pass
-        elif call.data == "t23_4":
-            pass
-        elif call.data == "t23_5":
-            pass
+                if call.data == "t6_4":
+                    pass
 
-        elif call.data == "t24_1":
-            pass
-        elif call.data == "t24_2":
-            pass
-        elif call.data == "t24_3":
-            pass
-        elif call.data == "t24_4":
-            pass
+                if call.data == "t7_1":
+                    pass
 
-        elif call.data == "t25_1":
-            pass
-        elif call.data == "t25_2":
-            pass
-        elif call.data == "t25_3":
-            pass
-        elif call.data == "t25_4":
-            pass
+                if call.data == "t7_2":
+                    pass
 
-        elif call.data == "t26_1":
-            pass
-        elif call.data == "t26_2":
-            pass
-        elif call.data == "t26_3":
-            pass
-        elif call.data == "t26_4":
-            pass
+                if call.data == "t7_3":
+                    pass
 
-        elif call.data == "t27_1":
-            pass
-        elif call.data == "t27_2":
-            pass
+                if call.data == "t7_4":
+                    pass
+
+                if call.data == "t7_5":
+                    pass
+
+                if call.data == "t7_6":
+                    pass
+
+                if call.data == "t7_7":
+                    pass
+
+                if call.data == "t7_8":
+                    pass
+
+                if call.data == "t8_1":
+                    pass
+
+                if call.data == "t8_2":
+                    pass
+
+                if call.data == "t8_3":
+                    pass
+
+                if call.data == "t8_4":
+                    pass
+
+                if call.data == "t8_5":
+                    pass
+
+                if call.data == "t8_6":
+                    pass
+
+                if call.data == "t8_7":
+                    pass
+
+                if call.data == "t9_1":
+                    pass
+
+                if call.data == "t9_2":
+                    pass
+
+                if call.data == "t9_3":
+                    pass
+
+                if call.data == "t10_1":
+                    pass
+
+                if call.data == "t10_2":
+                    pass
+
+                if call.data == "t10_3":
+                    pass
+
+                if call.data == "t11_1":
+                    pass
+
+                if call.data == "t11_2":
+                    pass
+
+                if call.data == "t11_3":
+                    pass
+
+                if call.data == "t11_4":
+                    pass
+
+                if call.data == "t11_5":
+                    pass
+
+                if call.data == "t12_1":
+                    pass
+
+                if call.data == "t12_2":
+                    pass
+
+                if call.data == "t12_3":
+                    pass
+
+                if call.data == "t12_4":
+                    pass
+
+                if call.data == "t12_5":
+                    pass
+
+                if call.data == "t12_6":
+                    pass
+
+                if call.data == "t13_1":
+                    pass
+
+                if call.data == "t13_2":
+                    pass
+
+                if call.data == "t13_3":
+                    pass
+
+                if call.data == "t13_4":
+                    pass
+
+                if call.data == "t14_1":
+                    pass
+
+                if call.data == "t14_2":
+                    pass
+
+                if call.data == "t14_3":
+                    pass
+
+                if call.data == "t15_1":
+                    pass
+
+                if call.data == "t15_2":
+                    pass
+
+                if call.data == "t15_3":
+                    pass
+
+                if call.data == "t15_4":
+                    pass
+
+                if call.data == "t15_5":
+                    pass
+
+                if call.data == "t16_1":
+                    pass
+
+                if call.data == "t16_2":
+                    pass
+
+                if call.data == "t16_3":
+                    pass
+
+                if call.data == "t16_4":
+                    pass
+
+                if call.data == "t16_5":
+                    pass
+
+                if call.data == "t16_6":
+                    pass
+
+                if call.data == "t17_1":
+                    pass
+
+                if call.data == "t17_2":
+                    pass
+
+                if call.data == "t18_1":
+                    pass
+
+                if call.data == "t18_2":
+                    pass
+
+                if call.data == "t19_1":
+                    pass
+
+                if call.data == "t19_2":
+                    pass
+
+                if call.data == "t20_1":
+                    pass
+
+                if call.data == "t20_2":
+                    pass
+
+                if call.data == "t21_1":
+                    pass
+
+                if call.data == "t21_2":
+                    pass
+
+                if call.data == "t22_1":
+                    pass
+
+                if call.data == "t22_2":
+                    pass
+
+                if call.data == "t22_3":
+                    pass
+
+                if call.data == "t22_4":
+                    pass
+
+                if call.data == "t23_1":
+                    pass
+
+                if call.data == "t23_2":
+                    pass
+
+                if call.data == "t23_3":
+                    pass
+
+                if call.data == "t23_4":
+                    pass
+
+                if call.data == "t23_5":
+                    pass
+
+                if call.data == "t24_1":
+                    pass
+
+                if call.data == "t24_2":
+                    pass
+
+                if call.data == "t24_3":
+                    pass
+
+                if call.data == "t24_4":
+                    pass
+
+                if call.data == "t25_1":
+                    pass
+
+                if call.data == "t25_2":
+                    pass
+
+                if call.data == "t25_3":
+                    pass
+
+                if call.data == "t25_4":
+                    pass
+
+                if call.data == "t26_1":
+                    pass
+
+                if call.data == "t26_2":
+                    pass
+
+                if call.data == "t26_3":
+                    pass
+
+                if call.data == "t26_4":
+                    pass
+
+                if call.data == "t27_1":
+                    pass
+
+                if call.data == "t27_2":
+                    pass
+            else:
+                bot.send_message(idd,
+                                 f"<b><u>{call.message.from_user.username}</u></b>, войдите в свой аккаунт "
+                                 f"для решения заданий. /logIn",
+                                 reply_markup=start_markup, parse_mode='html')
+
+        except KeyError:
+            bot.send_message(idd, f"Вы не можете приступить к заданиям без регистрации.\n"
+                                  f"Для регистрации воспользуйтесь функцией /registration",
+                             reply_markup=start_markup)
 
     @bot.message_handler(content_types='sticker')
     def fff(message):
@@ -1420,7 +1869,13 @@ Task23,Task24,Task25,Task26,Task27 WHERE User.id = {int(message.from_user.id)}""
 
     @bot.message_handler(content_types='photo')
     def ff(message):
-        print(message)
+        con = sqlite3.connect(db_name)
+        cur = con.cursor()
+        command = f"""Select * from Task1"""
+        result = cur.execute(command).fetchall()
+        print(result)
+        con.commit()
+        cur.close()
 
     bot.polling(none_stop=True)
 
