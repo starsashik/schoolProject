@@ -1367,6 +1367,1268 @@ Task23,Task24,Task25,Task26,Task27 WHERE User.id = {int(message.from_user.id)}""
         con.commit()
         cur.close()
 
+    def t3_1A(message):
+        with open("tmp/Task3/1/answer", encoding='utf8') as f:
+            d = f.read().split()[0]
+        if message.text == d:
+            con = sqlite3.connect(db_name)
+            cur = con.cursor()
+            command = f"""UPDATE "Task3" SET "1" = '1' WHERE id = {int(message.from_user.id)}"""
+            cur.execute(command)
+            con.commit()
+            cur.close()
+            t3_up(int(message.from_user.id))
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы правильно решили задачу\n"
+                             f"Ваш результат учтен",
+                             reply_markup=task1_markup, parse_mode='html')
+        else:
+            mi1 = types.InlineKeyboardMarkup()
+            i1 = types.InlineKeyboardButton(text='Решение', callback_data="t3_1R")
+            mi1.add(i1)
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы ответили <b>неверно</b>.\n"
+                             f"Можете посмотреть решение",
+                             reply_markup=mi1, parse_mode='html')
+
+    def t3_2A(message):
+        with open("tmp/Task3/2/answer", encoding='utf8') as f:
+            d = f.read().split()[0]
+        if message.text == d:
+            con = sqlite3.connect(db_name)
+            cur = con.cursor()
+            command = f"""UPDATE "Task3" SET "2" = '1' WHERE id = {int(message.from_user.id)}"""
+            cur.execute(command)
+            con.commit()
+            cur.close()
+            t3_up(int(message.from_user.id))
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы правильно решили задачу\n"
+                             f"Ваш результат учтен",
+                             reply_markup=task1_markup, parse_mode='html')
+        else:
+            mi1 = types.InlineKeyboardMarkup()
+            i1 = types.InlineKeyboardButton(text='Решение', callback_data="t3_2R")
+            mi1.add(i1)
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы ответили <b>неверно</b>.\n"
+                             f"Можете посмотреть решение",
+                             reply_markup=mi1, parse_mode='html')
+
+    def t3_up(idd):
+        con = sqlite3.connect(db_name)
+        cur = con.cursor()
+        command = f"""Select * from Task3 WHERE id = {idd}"""
+        result = cur.execute(command).fetchall()
+        curent = round(sum(result[0][1:3]) / 2 * 100)
+        command = f"""UPDATE "Task3" SET "Total" = {curent} WHERE id = {idd}"""
+        cur.execute(command)
+        con.commit()
+        cur.close()
+
+    def t4_1A(message):
+        with open("tmp/Task4/1/answer", encoding='utf8') as f:
+            d = f.read().split()[0]
+        if message.text == d:
+            con = sqlite3.connect(db_name)
+            cur = con.cursor()
+            command = f"""UPDATE "Task4" SET "1" = '1' WHERE id = {int(message.from_user.id)}"""
+            cur.execute(command)
+            con.commit()
+            cur.close()
+            t4_up(int(message.from_user.id))
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы правильно решили задачу\n"
+                             f"Ваш результат учтен",
+                             reply_markup=task1_markup, parse_mode='html')
+        else:
+            mi1 = types.InlineKeyboardMarkup()
+            i1 = types.InlineKeyboardButton(text='Решение', callback_data="t4_1R")
+            mi1.add(i1)
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы ответили <b>неверно</b>.\n"
+                             f"Можете посмотреть решение",
+                             reply_markup=mi1, parse_mode='html')
+
+    def t4_2A(message):
+        with open("tmp/Task4/2/answer", encoding='utf8') as f:
+            d = f.read().split()[0]
+        if message.text == d:
+            con = sqlite3.connect(db_name)
+            cur = con.cursor()
+            command = f"""UPDATE "Task4" SET "2" = '1' WHERE id = {int(message.from_user.id)}"""
+            cur.execute(command)
+            con.commit()
+            cur.close()
+            t4_up(int(message.from_user.id))
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы правильно решили задачу\n"
+                             f"Ваш результат учтен",
+                             reply_markup=task1_markup, parse_mode='html')
+        else:
+            mi1 = types.InlineKeyboardMarkup()
+            i1 = types.InlineKeyboardButton(text='Решение', callback_data="t4_2R")
+            mi1.add(i1)
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы ответили <b>неверно</b>.\n"
+                             f"Можете посмотреть решение",
+                             reply_markup=mi1, parse_mode='html')
+
+    def t4_3A(message):
+        with open("tmp/Task4/3/answer", encoding='utf8') as f:
+            d = f.read().split()[0]
+        if message.text == d:
+            con = sqlite3.connect(db_name)
+            cur = con.cursor()
+            command = f"""UPDATE "Task4" SET "3" = '1' WHERE id = {int(message.from_user.id)}"""
+            cur.execute(command)
+            con.commit()
+            cur.close()
+            t4_up(int(message.from_user.id))
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы правильно решили задачу\n"
+                             f"Ваш результат учтен",
+                             reply_markup=task1_markup, parse_mode='html')
+        else:
+            mi1 = types.InlineKeyboardMarkup()
+            i1 = types.InlineKeyboardButton(text='Решение', callback_data="t4_3R")
+            mi1.add(i1)
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы ответили <b>неверно</b>.\n"
+                             f"Можете посмотреть решение",
+                             reply_markup=mi1, parse_mode='html')
+
+    def t4_4A(message):
+        with open("tmp/Task4/4/answer", encoding='utf8') as f:
+            d = f.read().split()[0]
+        if message.text == d:
+            con = sqlite3.connect(db_name)
+            cur = con.cursor()
+            command = f"""UPDATE "Task4" SET "4" = '1' WHERE id = {int(message.from_user.id)}"""
+            cur.execute(command)
+            con.commit()
+            cur.close()
+            t4_up(int(message.from_user.id))
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы правильно решили задачу\n"
+                             f"Ваш результат учтен",
+                             reply_markup=task1_markup, parse_mode='html')
+        else:
+            mi1 = types.InlineKeyboardMarkup()
+            i1 = types.InlineKeyboardButton(text='Решение', callback_data="t4_4R")
+            mi1.add(i1)
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы ответили <b>неверно</b>.\n"
+                             f"Можете посмотреть решение",
+                             reply_markup=mi1, parse_mode='html')
+
+    def t4_up(idd):
+        con = sqlite3.connect(db_name)
+        cur = con.cursor()
+        command = f"""Select * from Task4 WHERE id = {idd}"""
+        result = cur.execute(command).fetchall()
+        curent = round(sum(result[0][1:5]) / 4 * 100)
+        command = f"""UPDATE "Task4" SET "Total" = {curent} WHERE id = {idd}"""
+        cur.execute(command)
+        con.commit()
+        cur.close()
+
+    def t5_1A(message):
+        with open("tmp/Task5/1/answer", encoding='utf8') as f:
+            d = f.read().split()[0]
+        if message.text == d:
+            con = sqlite3.connect(db_name)
+            cur = con.cursor()
+            command = f"""UPDATE "Task5" SET "1" = '1' WHERE id = {int(message.from_user.id)}"""
+            cur.execute(command)
+            con.commit()
+            cur.close()
+            t5_up(int(message.from_user.id))
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы правильно решили задачу\n"
+                             f"Ваш результат учтен",
+                             reply_markup=task1_markup, parse_mode='html')
+        else:
+            mi1 = types.InlineKeyboardMarkup()
+            i1 = types.InlineKeyboardButton(text='Решение', callback_data="t5_1R")
+            mi1.add(i1)
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы ответили <b>неверно</b>.\n"
+                             f"Можете посмотреть решение",
+                             reply_markup=mi1, parse_mode='html')
+
+    def t5_2A(message):
+        with open("tmp/Task5/2/answer", encoding='utf8') as f:
+            d = f.read().split()[0]
+        if message.text == d:
+            con = sqlite3.connect(db_name)
+            cur = con.cursor()
+            command = f"""UPDATE "Task5" SET "2" = '1' WHERE id = {int(message.from_user.id)}"""
+            cur.execute(command)
+            con.commit()
+            cur.close()
+            t5_up(int(message.from_user.id))
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы правильно решили задачу\n"
+                             f"Ваш результат учтен",
+                             reply_markup=task1_markup, parse_mode='html')
+        else:
+            mi1 = types.InlineKeyboardMarkup()
+            i1 = types.InlineKeyboardButton(text='Решение', callback_data="t5_2R")
+            mi1.add(i1)
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы ответили <b>неверно</b>.\n"
+                             f"Можете посмотреть решение",
+                             reply_markup=mi1, parse_mode='html')
+
+    def t5_3A(message):
+        with open("tmp/Task5/3/answer", encoding='utf8') as f:
+            d = f.read().split()[0]
+        if message.text == d:
+            con = sqlite3.connect(db_name)
+            cur = con.cursor()
+            command = f"""UPDATE "Task5" SET "3" = '1' WHERE id = {int(message.from_user.id)}"""
+            cur.execute(command)
+            con.commit()
+            cur.close()
+            t5_up(int(message.from_user.id))
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы правильно решили задачу\n"
+                             f"Ваш результат учтен",
+                             reply_markup=task1_markup, parse_mode='html')
+        else:
+            mi1 = types.InlineKeyboardMarkup()
+            i1 = types.InlineKeyboardButton(text='Решение', callback_data="t5_3R")
+            mi1.add(i1)
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы ответили <b>неверно</b>.\n"
+                             f"Можете посмотреть решение",
+                             reply_markup=mi1, parse_mode='html')
+
+    def t5_4A(message):
+        with open("tmp/Task5/4/answer", encoding='utf8') as f:
+            d = f.read().split()[0]
+        if message.text == d:
+            con = sqlite3.connect(db_name)
+            cur = con.cursor()
+            command = f"""UPDATE "Task5" SET "4" = '1' WHERE id = {int(message.from_user.id)}"""
+            cur.execute(command)
+            con.commit()
+            cur.close()
+            t5_up(int(message.from_user.id))
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы правильно решили задачу\n"
+                             f"Ваш результат учтен",
+                             reply_markup=task1_markup, parse_mode='html')
+        else:
+            mi1 = types.InlineKeyboardMarkup()
+            i1 = types.InlineKeyboardButton(text='Решение', callback_data="t5_4R")
+            mi1.add(i1)
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы ответили <b>неверно</b>.\n"
+                             f"Можете посмотреть решение",
+                             reply_markup=mi1, parse_mode='html')
+
+    def t5_5A(message):
+        with open("tmp/Task5/5/answer", encoding='utf8') as f:
+            d = f.read().split()[0]
+        if message.text == d:
+            con = sqlite3.connect(db_name)
+            cur = con.cursor()
+            command = f"""UPDATE "Task5" SET "5" = '1' WHERE id = {int(message.from_user.id)}"""
+            cur.execute(command)
+            con.commit()
+            cur.close()
+            t5_up(int(message.from_user.id))
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы правильно решили задачу\n"
+                             f"Ваш результат учтен",
+                             reply_markup=task1_markup, parse_mode='html')
+        else:
+            mi1 = types.InlineKeyboardMarkup()
+            i1 = types.InlineKeyboardButton(text='Решение', callback_data="t5_5R")
+            mi1.add(i1)
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы ответили <b>неверно</b>.\n"
+                             f"Можете посмотреть решение",
+                             reply_markup=mi1, parse_mode='html')
+
+    def t5_6A(message):
+        with open("tmp/Task5/6/answer", encoding='utf8') as f:
+            d = f.read().split()[0]
+        if message.text == d:
+            con = sqlite3.connect(db_name)
+            cur = con.cursor()
+            command = f"""UPDATE "Task5" SET "6" = '1' WHERE id = {int(message.from_user.id)}"""
+            cur.execute(command)
+            con.commit()
+            cur.close()
+            t5_up(int(message.from_user.id))
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы правильно решили задачу\n"
+                             f"Ваш результат учтен",
+                             reply_markup=task1_markup, parse_mode='html')
+        else:
+            mi1 = types.InlineKeyboardMarkup()
+            i1 = types.InlineKeyboardButton(text='Решение', callback_data="t5_6R")
+            mi1.add(i1)
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы ответили <b>неверно</b>.\n"
+                             f"Можете посмотреть решение",
+                             reply_markup=mi1, parse_mode='html')
+
+    def t5_up(idd):
+        con = sqlite3.connect(db_name)
+        cur = con.cursor()
+        command = f"""Select * from Task5 WHERE id = {idd}"""
+        result = cur.execute(command).fetchall()
+        curent = round(sum(result[0][1:7]) / 6 * 100)
+        command = f"""UPDATE "Task5" SET "Total" = {curent} WHERE id = {idd}"""
+        cur.execute(command)
+        con.commit()
+        cur.close()
+
+    def t6_1A(message):
+        with open("tmp/Task6/1/answer", encoding='utf8') as f:
+            d = f.read().split()[0]
+        if message.text == d:
+            con = sqlite3.connect(db_name)
+            cur = con.cursor()
+            command = f"""UPDATE "Task6" SET "1" = '1' WHERE id = {int(message.from_user.id)}"""
+            cur.execute(command)
+            con.commit()
+            cur.close()
+            t6_up(int(message.from_user.id))
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы правильно решили задачу\n"
+                             f"Ваш результат учтен",
+                             reply_markup=task1_markup, parse_mode='html')
+        else:
+            mi1 = types.InlineKeyboardMarkup()
+            i1 = types.InlineKeyboardButton(text='Решение', callback_data="t6_1R")
+            mi1.add(i1)
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы ответили <b>неверно</b>.\n"
+                             f"Можете посмотреть решение",
+                             reply_markup=mi1, parse_mode='html')
+
+    def t6_2A(message):
+        with open("tmp/Task6/2/answer", encoding='utf8') as f:
+            d = f.read().split()[0]
+        if message.text == d:
+            con = sqlite3.connect(db_name)
+            cur = con.cursor()
+            command = f"""UPDATE "Task6" SET "2" = '1' WHERE id = {int(message.from_user.id)}"""
+            cur.execute(command)
+            con.commit()
+            cur.close()
+            t6_up(int(message.from_user.id))
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы правильно решили задачу\n"
+                             f"Ваш результат учтен",
+                             reply_markup=task1_markup, parse_mode='html')
+        else:
+            mi1 = types.InlineKeyboardMarkup()
+            i1 = types.InlineKeyboardButton(text='Решение', callback_data="t6_2R")
+            mi1.add(i1)
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы ответили <b>неверно</b>.\n"
+                             f"Можете посмотреть решение",
+                             reply_markup=mi1, parse_mode='html')
+
+    def t6_3A(message):
+        with open("tmp/Task6/3/answer", encoding='utf8') as f:
+            d = f.read().split()[0]
+        if message.text == d:
+            con = sqlite3.connect(db_name)
+            cur = con.cursor()
+            command = f"""UPDATE "Task6" SET "3" = '1' WHERE id = {int(message.from_user.id)}"""
+            cur.execute(command)
+            con.commit()
+            cur.close()
+            t6_up(int(message.from_user.id))
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы правильно решили задачу\n"
+                             f"Ваш результат учтен",
+                             reply_markup=task1_markup, parse_mode='html')
+        else:
+            mi1 = types.InlineKeyboardMarkup()
+            i1 = types.InlineKeyboardButton(text='Решение', callback_data="t6_3R")
+            mi1.add(i1)
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы ответили <b>неверно</b>.\n"
+                             f"Можете посмотреть решение",
+                             reply_markup=mi1, parse_mode='html')
+
+    def t6_4A(message):
+        with open("tmp/Task6/4/answer", encoding='utf8') as f:
+            d = f.read().split()[0]
+        if message.text == d:
+            con = sqlite3.connect(db_name)
+            cur = con.cursor()
+            command = f"""UPDATE "Task6" SET "4" = '1' WHERE id = {int(message.from_user.id)}"""
+            cur.execute(command)
+            con.commit()
+            cur.close()
+            t6_up(int(message.from_user.id))
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы правильно решили задачу\n"
+                             f"Ваш результат учтен",
+                             reply_markup=task1_markup, parse_mode='html')
+        else:
+            mi1 = types.InlineKeyboardMarkup()
+            i1 = types.InlineKeyboardButton(text='Решение', callback_data="t6_4R")
+            mi1.add(i1)
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы ответили <b>неверно</b>.\n"
+                             f"Можете посмотреть решение",
+                             reply_markup=mi1, parse_mode='html')
+
+    def t6_up(idd):
+        con = sqlite3.connect(db_name)
+        cur = con.cursor()
+        command = f"""Select * from Task6 WHERE id = {idd}"""
+        result = cur.execute(command).fetchall()
+        curent = round(sum(result[0][1:5]) / 4 * 100)
+        command = f"""UPDATE "Task6" SET "Total" = {curent} WHERE id = {idd}"""
+        cur.execute(command)
+        con.commit()
+        cur.close()
+
+    def t7_1A(message):
+        with open("tmp/Task7/1/answer", encoding='utf8') as f:
+            d = f.read().split()[0]
+        if message.text == d:
+            con = sqlite3.connect(db_name)
+            cur = con.cursor()
+            command = f"""UPDATE "Task7" SET "1" = '1' WHERE id = {int(message.from_user.id)}"""
+            cur.execute(command)
+            con.commit()
+            cur.close()
+            t7_up(int(message.from_user.id))
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы правильно решили задачу\n"
+                             f"Ваш результат учтен",
+                             reply_markup=task1_markup, parse_mode='html')
+        else:
+            mi1 = types.InlineKeyboardMarkup()
+            i1 = types.InlineKeyboardButton(text='Решение', callback_data="t7_1R")
+            mi1.add(i1)
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы ответили <b>неверно</b>.\n"
+                             f"Можете посмотреть решение",
+                             reply_markup=mi1, parse_mode='html')
+
+    def t7_2A(message):
+        with open("tmp/Task7/2/answer", encoding='utf8') as f:
+            d = f.read().split()[0]
+        if message.text == d:
+            con = sqlite3.connect(db_name)
+            cur = con.cursor()
+            command = f"""UPDATE "Task7" SET "2" = '1' WHERE id = {int(message.from_user.id)}"""
+            cur.execute(command)
+            con.commit()
+            cur.close()
+            t7_up(int(message.from_user.id))
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы правильно решили задачу\n"
+                             f"Ваш результат учтен",
+                             reply_markup=task1_markup, parse_mode='html')
+        else:
+            mi1 = types.InlineKeyboardMarkup()
+            i1 = types.InlineKeyboardButton(text='Решение', callback_data="t7_2R")
+            mi1.add(i1)
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы ответили <b>неверно</b>.\n"
+                             f"Можете посмотреть решение",
+                             reply_markup=mi1, parse_mode='html')
+
+    def t7_3A(message):
+        with open("tmp/Task7/3/answer", encoding='utf8') as f:
+            d = f.read().split()[0]
+        if message.text == d:
+            con = sqlite3.connect(db_name)
+            cur = con.cursor()
+            command = f"""UPDATE "Task7" SET "3" = '1' WHERE id = {int(message.from_user.id)}"""
+            cur.execute(command)
+            con.commit()
+            cur.close()
+            t7_up(int(message.from_user.id))
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы правильно решили задачу\n"
+                             f"Ваш результат учтен",
+                             reply_markup=task1_markup, parse_mode='html')
+        else:
+            mi1 = types.InlineKeyboardMarkup()
+            i1 = types.InlineKeyboardButton(text='Решение', callback_data="t7_3R")
+            mi1.add(i1)
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы ответили <b>неверно</b>.\n"
+                             f"Можете посмотреть решение",
+                             reply_markup=mi1, parse_mode='html')
+
+    def t7_4A(message):
+        with open("tmp/Task7/4/answer", encoding='utf8') as f:
+            d = f.read().split()[0]
+        if message.text == d:
+            con = sqlite3.connect(db_name)
+            cur = con.cursor()
+            command = f"""UPDATE "Task7" SET "4" = '1' WHERE id = {int(message.from_user.id)}"""
+            cur.execute(command)
+            con.commit()
+            cur.close()
+            t7_up(int(message.from_user.id))
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы правильно решили задачу\n"
+                             f"Ваш результат учтен",
+                             reply_markup=task1_markup, parse_mode='html')
+        else:
+            mi1 = types.InlineKeyboardMarkup()
+            i1 = types.InlineKeyboardButton(text='Решение', callback_data="t7_4R")
+            mi1.add(i1)
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы ответили <b>неверно</b>.\n"
+                             f"Можете посмотреть решение",
+                             reply_markup=mi1, parse_mode='html')
+
+    def t7_5A(message):
+        with open("tmp/Task7/5/answer", encoding='utf8') as f:
+            d = f.read().split()[0]
+        if message.text == d:
+            con = sqlite3.connect(db_name)
+            cur = con.cursor()
+            command = f"""UPDATE "Task7" SET "5" = '1' WHERE id = {int(message.from_user.id)}"""
+            cur.execute(command)
+            con.commit()
+            cur.close()
+            t7_up(int(message.from_user.id))
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы правильно решили задачу\n"
+                             f"Ваш результат учтен",
+                             reply_markup=task1_markup, parse_mode='html')
+        else:
+            mi1 = types.InlineKeyboardMarkup()
+            i1 = types.InlineKeyboardButton(text='Решение', callback_data="t7_5R")
+            mi1.add(i1)
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы ответили <b>неверно</b>.\n"
+                             f"Можете посмотреть решение",
+                             reply_markup=mi1, parse_mode='html')
+
+    def t7_6A(message):
+        with open("tmp/Task7/6/answer", encoding='utf8') as f:
+            d = f.read().split()[0]
+        if message.text == d:
+            con = sqlite3.connect(db_name)
+            cur = con.cursor()
+            command = f"""UPDATE "Task7" SET "6" = '1' WHERE id = {int(message.from_user.id)}"""
+            cur.execute(command)
+            con.commit()
+            cur.close()
+            t7_up(int(message.from_user.id))
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы правильно решили задачу\n"
+                             f"Ваш результат учтен",
+                             reply_markup=task1_markup, parse_mode='html')
+        else:
+            mi1 = types.InlineKeyboardMarkup()
+            i1 = types.InlineKeyboardButton(text='Решение', callback_data="t7_6R")
+            mi1.add(i1)
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы ответили <b>неверно</b>.\n"
+                             f"Можете посмотреть решение",
+                             reply_markup=mi1, parse_mode='html')
+
+    def t7_7A(message):
+        with open("tmp/Task7/7/answer", encoding='utf8') as f:
+            d = f.read().split()[0]
+        if message.text == d:
+            con = sqlite3.connect(db_name)
+            cur = con.cursor()
+            command = f"""UPDATE "Task7" SET "7" = '1' WHERE id = {int(message.from_user.id)}"""
+            cur.execute(command)
+            con.commit()
+            cur.close()
+            t7_up(int(message.from_user.id))
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы правильно решили задачу\n"
+                             f"Ваш результат учтен",
+                             reply_markup=task1_markup, parse_mode='html')
+        else:
+            mi1 = types.InlineKeyboardMarkup()
+            i1 = types.InlineKeyboardButton(text='Решение', callback_data="t7_7R")
+            mi1.add(i1)
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы ответили <b>неверно</b>.\n"
+                             f"Можете посмотреть решение",
+                             reply_markup=mi1, parse_mode='html')
+
+    def t7_8A(message):
+        with open("tmp/Task7/8/answer", encoding='utf8') as f:
+            d = f.read().split()[0]
+        if message.text == d:
+            con = sqlite3.connect(db_name)
+            cur = con.cursor()
+            command = f"""UPDATE "Task7" SET "8" = '1' WHERE id = {int(message.from_user.id)}"""
+            cur.execute(command)
+            con.commit()
+            cur.close()
+            t7_up(int(message.from_user.id))
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы правильно решили задачу\n"
+                             f"Ваш результат учтен",
+                             reply_markup=task1_markup, parse_mode='html')
+        else:
+            mi1 = types.InlineKeyboardMarkup()
+            i1 = types.InlineKeyboardButton(text='Решение', callback_data="t7_8R")
+            mi1.add(i1)
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы ответили <b>неверно</b>.\n"
+                             f"Можете посмотреть решение",
+                             reply_markup=mi1, parse_mode='html')
+
+    def t7_up(idd):
+        con = sqlite3.connect(db_name)
+        cur = con.cursor()
+        command = f"""Select * from Task7 WHERE id = {idd}"""
+        result = cur.execute(command).fetchall()
+        curent = round(sum(result[0][1:9]) / 8 * 100)
+        command = f"""UPDATE "Task7" SET "Total" = {curent} WHERE id = {idd}"""
+        cur.execute(command)
+        con.commit()
+        cur.close()
+
+    def t8_1A(message):
+        with open("tmp/Task8/1/answer", encoding='utf8') as f:
+            d = f.read().split()[0]
+        if message.text == d:
+            con = sqlite3.connect(db_name)
+            cur = con.cursor()
+            command = f"""UPDATE "Task8" SET "1" = '1' WHERE id = {int(message.from_user.id)}"""
+            cur.execute(command)
+            con.commit()
+            cur.close()
+            t8_up(int(message.from_user.id))
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы правильно решили задачу\n"
+                             f"Ваш результат учтен",
+                             reply_markup=task1_markup, parse_mode='html')
+        else:
+            mi1 = types.InlineKeyboardMarkup()
+            i1 = types.InlineKeyboardButton(text='Решение', callback_data="t8_1R")
+            mi1.add(i1)
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы ответили <b>неверно</b>.\n"
+                             f"Можете посмотреть решение",
+                             reply_markup=mi1, parse_mode='html')
+
+    def t8_2A(message):
+        with open("tmp/Task8/2/answer", encoding='utf8') as f:
+            d = f.read().split()[0]
+        if message.text == d:
+            con = sqlite3.connect(db_name)
+            cur = con.cursor()
+            command = f"""UPDATE "Task8" SET "2" = '1' WHERE id = {int(message.from_user.id)}"""
+            cur.execute(command)
+            con.commit()
+            cur.close()
+            t8_up(int(message.from_user.id))
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы правильно решили задачу\n"
+                             f"Ваш результат учтен",
+                             reply_markup=task1_markup, parse_mode='html')
+        else:
+            mi1 = types.InlineKeyboardMarkup()
+            i1 = types.InlineKeyboardButton(text='Решение', callback_data="t8_2R")
+            mi1.add(i1)
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы ответили <b>неверно</b>.\n"
+                             f"Можете посмотреть решение",
+                             reply_markup=mi1, parse_mode='html')
+
+    def t8_3A(message):
+        with open("tmp/Task8/3/answer", encoding='utf8') as f:
+            d = f.read().split()[0]
+        if message.text == d:
+            con = sqlite3.connect(db_name)
+            cur = con.cursor()
+            command = f"""UPDATE "Task8" SET "3" = '1' WHERE id = {int(message.from_user.id)}"""
+            cur.execute(command)
+            con.commit()
+            cur.close()
+            t8_up(int(message.from_user.id))
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы правильно решили задачу\n"
+                             f"Ваш результат учтен",
+                             reply_markup=task1_markup, parse_mode='html')
+        else:
+            mi1 = types.InlineKeyboardMarkup()
+            i1 = types.InlineKeyboardButton(text='Решение', callback_data="t8_3R")
+            mi1.add(i1)
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы ответили <b>неверно</b>.\n"
+                             f"Можете посмотреть решение",
+                             reply_markup=mi1, parse_mode='html')
+
+    def t8_4A(message):
+        with open("tmp/Task8/4/answer", encoding='utf8') as f:
+            d = f.read().split()[0]
+        if message.text == d:
+            con = sqlite3.connect(db_name)
+            cur = con.cursor()
+            command = f"""UPDATE "Task8" SET "4" = '1' WHERE id = {int(message.from_user.id)}"""
+            cur.execute(command)
+            con.commit()
+            cur.close()
+            t8_up(int(message.from_user.id))
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы правильно решили задачу\n"
+                             f"Ваш результат учтен",
+                             reply_markup=task1_markup, parse_mode='html')
+        else:
+            mi1 = types.InlineKeyboardMarkup()
+            i1 = types.InlineKeyboardButton(text='Решение', callback_data="t8_4R")
+            mi1.add(i1)
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы ответили <b>неверно</b>.\n"
+                             f"Можете посмотреть решение",
+                             reply_markup=mi1, parse_mode='html')
+
+    def t8_5A(message):
+        with open("tmp/Task8/5/answer", encoding='utf8') as f:
+            d = f.read().split()[0]
+        if message.text == d:
+            con = sqlite3.connect(db_name)
+            cur = con.cursor()
+            command = f"""UPDATE "Task8" SET "5" = '1' WHERE id = {int(message.from_user.id)}"""
+            cur.execute(command)
+            con.commit()
+            cur.close()
+            t8_up(int(message.from_user.id))
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы правильно решили задачу\n"
+                             f"Ваш результат учтен",
+                             reply_markup=task1_markup, parse_mode='html')
+        else:
+            mi1 = types.InlineKeyboardMarkup()
+            i1 = types.InlineKeyboardButton(text='Решение', callback_data="t8_5R")
+            mi1.add(i1)
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы ответили <b>неверно</b>.\n"
+                             f"Можете посмотреть решение",
+                             reply_markup=mi1, parse_mode='html')
+
+    def t8_6A(message):
+        with open("tmp/Task8/6/answer", encoding='utf8') as f:
+            d = f.read().split()[0]
+        if message.text == d:
+            con = sqlite3.connect(db_name)
+            cur = con.cursor()
+            command = f"""UPDATE "Task8" SET "6" = '1' WHERE id = {int(message.from_user.id)}"""
+            cur.execute(command)
+            con.commit()
+            cur.close()
+            t8_up(int(message.from_user.id))
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы правильно решили задачу\n"
+                             f"Ваш результат учтен",
+                             reply_markup=task1_markup, parse_mode='html')
+        else:
+            mi1 = types.InlineKeyboardMarkup()
+            i1 = types.InlineKeyboardButton(text='Решение', callback_data="t8_6R")
+            mi1.add(i1)
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы ответили <b>неверно</b>.\n"
+                             f"Можете посмотреть решение",
+                             reply_markup=mi1, parse_mode='html')
+
+    def t8_7A(message):
+        with open("tmp/Task8/7/answer", encoding='utf8') as f:
+            d = f.read().split()[0]
+        if message.text == d:
+            con = sqlite3.connect(db_name)
+            cur = con.cursor()
+            command = f"""UPDATE "Task8" SET "7" = '1' WHERE id = {int(message.from_user.id)}"""
+            cur.execute(command)
+            con.commit()
+            cur.close()
+            t8_up(int(message.from_user.id))
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы правильно решили задачу\n"
+                             f"Ваш результат учтен",
+                             reply_markup=task1_markup, parse_mode='html')
+        else:
+            mi1 = types.InlineKeyboardMarkup()
+            i1 = types.InlineKeyboardButton(text='Решение', callback_data="t8_7R")
+            mi1.add(i1)
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы ответили <b>неверно</b>.\n"
+                             f"Можете посмотреть решение",
+                             reply_markup=mi1, parse_mode='html')
+
+    def t8_up(idd):
+        con = sqlite3.connect(db_name)
+        cur = con.cursor()
+        command = f"""Select * from Task8 WHERE id = {idd}"""
+        result = cur.execute(command).fetchall()
+        curent = round(sum(result[0][1:8]) / 7 * 100)
+        command = f"""UPDATE "Task8" SET "Total" = {curent} WHERE id = {idd}"""
+        cur.execute(command)
+        con.commit()
+        cur.close()
+
+    def t9_1A(message):
+        with open("tmp/Task9/1/answer", encoding='utf8') as f:
+            d = f.read().split()[0]
+        if message.text == d:
+            con = sqlite3.connect(db_name)
+            cur = con.cursor()
+            command = f"""UPDATE "Task9" SET "1" = '1' WHERE id = {int(message.from_user.id)}"""
+            cur.execute(command)
+            con.commit()
+            cur.close()
+            t9_up(int(message.from_user.id))
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы правильно решили задачу\n"
+                             f"Ваш результат учтен",
+                             reply_markup=task1_markup, parse_mode='html')
+        else:
+            mi1 = types.InlineKeyboardMarkup()
+            i1 = types.InlineKeyboardButton(text='Решение', callback_data="t9_1R")
+            mi1.add(i1)
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы ответили <b>неверно</b>.\n"
+                             f"Можете посмотреть решение",
+                             reply_markup=mi1, parse_mode='html')
+
+    def t9_2A(message):
+        with open("tmp/Task9/2/answer", encoding='utf8') as f:
+            d = f.read().split()[0]
+        if message.text == d:
+            con = sqlite3.connect(db_name)
+            cur = con.cursor()
+            command = f"""UPDATE "Task9" SET "2" = '1' WHERE id = {int(message.from_user.id)}"""
+            cur.execute(command)
+            con.commit()
+            cur.close()
+            t9_up(int(message.from_user.id))
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы правильно решили задачу\n"
+                             f"Ваш результат учтен",
+                             reply_markup=task1_markup, parse_mode='html')
+        else:
+            mi1 = types.InlineKeyboardMarkup()
+            i1 = types.InlineKeyboardButton(text='Решение', callback_data="t9_2R")
+            mi1.add(i1)
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы ответили <b>неверно</b>.\n"
+                             f"Можете посмотреть решение",
+                             reply_markup=mi1, parse_mode='html')
+
+    def t9_3A(message):
+        with open("tmp/Task9/3/answer", encoding='utf8') as f:
+            d = f.read().split()[0]
+        if message.text == d:
+            con = sqlite3.connect(db_name)
+            cur = con.cursor()
+            command = f"""UPDATE "Task9" SET "3" = '1' WHERE id = {int(message.from_user.id)}"""
+            cur.execute(command)
+            con.commit()
+            cur.close()
+            t9_up(int(message.from_user.id))
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы правильно решили задачу\n"
+                             f"Ваш результат учтен",
+                             reply_markup=task1_markup, parse_mode='html')
+        else:
+            mi1 = types.InlineKeyboardMarkup()
+            i1 = types.InlineKeyboardButton(text='Решение', callback_data="t9_3R")
+            mi1.add(i1)
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы ответили <b>неверно</b>.\n"
+                             f"Можете посмотреть решение",
+                             reply_markup=mi1, parse_mode='html')
+
+    def t9_up(idd):
+        con = sqlite3.connect(db_name)
+        cur = con.cursor()
+        command = f"""Select * from Task9 WHERE id = {idd}"""
+        result = cur.execute(command).fetchall()
+        curent = round(sum(result[0][1:4]) / 3 * 100)
+        command = f"""UPDATE "Task9" SET "Total" = {curent} WHERE id = {idd}"""
+        cur.execute(command)
+        con.commit()
+        cur.close()
+
+    def t10_1A(message):
+        with open("tmp/Task10/1/answer", encoding='utf8') as f:
+            d = f.read().split()[0]
+        if message.text == d:
+            con = sqlite3.connect(db_name)
+            cur = con.cursor()
+            command = f"""UPDATE "Task10" SET "1" = '1' WHERE id = {int(message.from_user.id)}"""
+            cur.execute(command)
+            con.commit()
+            cur.close()
+            t10_up(int(message.from_user.id))
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы правильно решили задачу\n"
+                             f"Ваш результат учтен",
+                             reply_markup=task1_markup, parse_mode='html')
+        else:
+            mi1 = types.InlineKeyboardMarkup()
+            i1 = types.InlineKeyboardButton(text='Решение', callback_data="t10_1R")
+            mi1.add(i1)
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы ответили <b>неверно</b>.\n"
+                             f"Можете посмотреть решение",
+                             reply_markup=mi1, parse_mode='html')
+
+    def t10_2A(message):
+        with open("tmp/Task10/2/answer", encoding='utf8') as f:
+            d = f.read().split()[0]
+        if message.text == d:
+            con = sqlite3.connect(db_name)
+            cur = con.cursor()
+            command = f"""UPDATE "Task10" SET "2" = '1' WHERE id = {int(message.from_user.id)}"""
+            cur.execute(command)
+            con.commit()
+            cur.close()
+            t10_up(int(message.from_user.id))
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы правильно решили задачу\n"
+                             f"Ваш результат учтен",
+                             reply_markup=task1_markup, parse_mode='html')
+        else:
+            mi1 = types.InlineKeyboardMarkup()
+            i1 = types.InlineKeyboardButton(text='Решение', callback_data="t10_2R")
+            mi1.add(i1)
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы ответили <b>неверно</b>.\n"
+                             f"Можете посмотреть решение",
+                             reply_markup=mi1, parse_mode='html')
+
+    def t10_3A(message):
+        with open("tmp/Task10/3/answer", encoding='utf8') as f:
+            d = f.read().split()[0]
+        if message.text == d:
+            con = sqlite3.connect(db_name)
+            cur = con.cursor()
+            command = f"""UPDATE "Task10" SET "3" = '1' WHERE id = {int(message.from_user.id)}"""
+            cur.execute(command)
+            con.commit()
+            cur.close()
+            t10_up(int(message.from_user.id))
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы правильно решили задачу\n"
+                             f"Ваш результат учтен",
+                             reply_markup=task1_markup, parse_mode='html')
+        else:
+            mi1 = types.InlineKeyboardMarkup()
+            i1 = types.InlineKeyboardButton(text='Решение', callback_data="t10_3R")
+            mi1.add(i1)
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы ответили <b>неверно</b>.\n"
+                             f"Можете посмотреть решение",
+                             reply_markup=mi1, parse_mode='html')
+
+    def t10_up(idd):
+        con = sqlite3.connect(db_name)
+        cur = con.cursor()
+        command = f"""Select * from Task10 WHERE id = {idd}"""
+        result = cur.execute(command).fetchall()
+        curent = round(sum(result[0][1:4]) / 3 * 100)
+        command = f"""UPDATE "Task10" SET "Total" = {curent} WHERE id = {idd}"""
+        cur.execute(command)
+        con.commit()
+        cur.close()
+
+    def t11_1A(message):
+        with open("tmp/Task11/1/answer", encoding='utf8') as f:
+            d = f.read().split()[0]
+        if message.text == d:
+            con = sqlite3.connect(db_name)
+            cur = con.cursor()
+            command = f"""UPDATE "Task11" SET "1" = '1' WHERE id = {int(message.from_user.id)}"""
+            cur.execute(command)
+            con.commit()
+            cur.close()
+            t11_up(int(message.from_user.id))
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы правильно решили задачу\n"
+                             f"Ваш результат учтен",
+                             reply_markup=task1_markup, parse_mode='html')
+        else:
+            mi1 = types.InlineKeyboardMarkup()
+            i1 = types.InlineKeyboardButton(text='Решение', callback_data="t11_1R")
+            mi1.add(i1)
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы ответили <b>неверно</b>.\n"
+                             f"Можете посмотреть решение",
+                             reply_markup=mi1, parse_mode='html')
+
+    def t11_2A(message):
+        with open("tmp/Task11/2/answer", encoding='utf8') as f:
+            d = f.read().split()[0]
+        if message.text == d:
+            con = sqlite3.connect(db_name)
+            cur = con.cursor()
+            command = f"""UPDATE "Task11" SET "2" = '1' WHERE id = {int(message.from_user.id)}"""
+            cur.execute(command)
+            con.commit()
+            cur.close()
+            t11_up(int(message.from_user.id))
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы правильно решили задачу\n"
+                             f"Ваш результат учтен",
+                             reply_markup=task1_markup, parse_mode='html')
+        else:
+            mi1 = types.InlineKeyboardMarkup()
+            i1 = types.InlineKeyboardButton(text='Решение', callback_data="t11_2R")
+            mi1.add(i1)
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы ответили <b>неверно</b>.\n"
+                             f"Можете посмотреть решение",
+                             reply_markup=mi1, parse_mode='html')
+
+    def t11_3A(message):
+        with open("tmp/Task11/3/answer", encoding='utf8') as f:
+            d = f.read().split()[0]
+        if message.text == d:
+            con = sqlite3.connect(db_name)
+            cur = con.cursor()
+            command = f"""UPDATE "Task11" SET "3" = '1' WHERE id = {int(message.from_user.id)}"""
+            cur.execute(command)
+            con.commit()
+            cur.close()
+            t11_up(int(message.from_user.id))
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы правильно решили задачу\n"
+                             f"Ваш результат учтен",
+                             reply_markup=task1_markup, parse_mode='html')
+        else:
+            mi1 = types.InlineKeyboardMarkup()
+            i1 = types.InlineKeyboardButton(text='Решение', callback_data="t11_3R")
+            mi1.add(i1)
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы ответили <b>неверно</b>.\n"
+                             f"Можете посмотреть решение",
+                             reply_markup=mi1, parse_mode='html')
+
+    def t11_4A(message):
+        with open("tmp/Task11/4/answer", encoding='utf8') as f:
+            d = f.read().split()[0]
+        if message.text == d:
+            con = sqlite3.connect(db_name)
+            cur = con.cursor()
+            command = f"""UPDATE "Task11" SET "4" = '1' WHERE id = {int(message.from_user.id)}"""
+            cur.execute(command)
+            con.commit()
+            cur.close()
+            t11_up(int(message.from_user.id))
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы правильно решили задачу\n"
+                             f"Ваш результат учтен",
+                             reply_markup=task1_markup, parse_mode='html')
+        else:
+            mi1 = types.InlineKeyboardMarkup()
+            i1 = types.InlineKeyboardButton(text='Решение', callback_data="t11_4R")
+            mi1.add(i1)
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы ответили <b>неверно</b>.\n"
+                             f"Можете посмотреть решение",
+                             reply_markup=mi1, parse_mode='html')
+
+    def t11_5A(message):
+        with open("tmp/Task11/5/answer", encoding='utf8') as f:
+            d = f.read().split()[0]
+        if message.text == d:
+            con = sqlite3.connect(db_name)
+            cur = con.cursor()
+            command = f"""UPDATE "Task11" SET "5" = '1' WHERE id = {int(message.from_user.id)}"""
+            cur.execute(command)
+            con.commit()
+            cur.close()
+            t11_up(int(message.from_user.id))
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы правильно решили задачу\n"
+                             f"Ваш результат учтен",
+                             reply_markup=task1_markup, parse_mode='html')
+        else:
+            mi1 = types.InlineKeyboardMarkup()
+            i1 = types.InlineKeyboardButton(text='Решение', callback_data="t11_5R")
+            mi1.add(i1)
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы ответили <b>неверно</b>.\n"
+                             f"Можете посмотреть решение",
+                             reply_markup=mi1, parse_mode='html')
+
+    def t11_up(idd):
+        con = sqlite3.connect(db_name)
+        cur = con.cursor()
+        command = f"""Select * from Task11 WHERE id = {idd}"""
+        result = cur.execute(command).fetchall()
+        curent = round(sum(result[0][1:6]) / 5 * 100)
+        command = f"""UPDATE "Task11" SET "Total" = {curent} WHERE id = {idd}"""
+        cur.execute(command)
+        con.commit()
+        cur.close()
+
+    def t12_1A(message):
+        with open("tmp/Task12/1/answer", encoding='utf8') as f:
+            d = f.read().split()[0]
+        if message.text == d:
+            con = sqlite3.connect(db_name)
+            cur = con.cursor()
+            command = f"""UPDATE "Task12" SET "1" = '1' WHERE id = {int(message.from_user.id)}"""
+            cur.execute(command)
+            con.commit()
+            cur.close()
+            t12_up(int(message.from_user.id))
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы правильно решили задачу\n"
+                             f"Ваш результат учтен",
+                             reply_markup=task1_markup, parse_mode='html')
+        else:
+            mi1 = types.InlineKeyboardMarkup()
+            i1 = types.InlineKeyboardButton(text='Решение', callback_data="t12_1R")
+            mi1.add(i1)
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы ответили <b>неверно</b>.\n"
+                             f"Можете посмотреть решение",
+                             reply_markup=mi1, parse_mode='html')
+
+    def t12_2A(message):
+        with open("tmp/Task12/2/answer", encoding='utf8') as f:
+            d = f.read().split()[0]
+        if message.text == d:
+            con = sqlite3.connect(db_name)
+            cur = con.cursor()
+            command = f"""UPDATE "Task12" SET "2" = '1' WHERE id = {int(message.from_user.id)}"""
+            cur.execute(command)
+            con.commit()
+            cur.close()
+            t8_up(int(message.from_user.id))
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы правильно решили задачу\n"
+                             f"Ваш результат учтен",
+                             reply_markup=task1_markup, parse_mode='html')
+        else:
+            mi1 = types.InlineKeyboardMarkup()
+            i1 = types.InlineKeyboardButton(text='Решение', callback_data="t12_2R")
+            mi1.add(i1)
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы ответили <b>неверно</b>.\n"
+                             f"Можете посмотреть решение",
+                             reply_markup=mi1, parse_mode='html')
+
+    def t12_3A(message):
+        with open("tmp/Task12/3/answer", encoding='utf8') as f:
+            d = f.read().split()[0]
+        if message.text == d:
+            con = sqlite3.connect(db_name)
+            cur = con.cursor()
+            command = f"""UPDATE "Task12" SET "3" = '1' WHERE id = {int(message.from_user.id)}"""
+            cur.execute(command)
+            con.commit()
+            cur.close()
+            t12_up(int(message.from_user.id))
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы правильно решили задачу\n"
+                             f"Ваш результат учтен",
+                             reply_markup=task1_markup, parse_mode='html')
+        else:
+            mi1 = types.InlineKeyboardMarkup()
+            i1 = types.InlineKeyboardButton(text='Решение', callback_data="t12_3R")
+            mi1.add(i1)
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы ответили <b>неверно</b>.\n"
+                             f"Можете посмотреть решение",
+                             reply_markup=mi1, parse_mode='html')
+
+    def t12_4A(message):
+        with open("tmp/Task12/4/answer", encoding='utf8') as f:
+            d = f.read().split()[0]
+        if message.text == d:
+            con = sqlite3.connect(db_name)
+            cur = con.cursor()
+            command = f"""UPDATE "Task12" SET "4" = '1' WHERE id = {int(message.from_user.id)}"""
+            cur.execute(command)
+            con.commit()
+            cur.close()
+            t12_up(int(message.from_user.id))
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы правильно решили задачу\n"
+                             f"Ваш результат учтен",
+                             reply_markup=task1_markup, parse_mode='html')
+        else:
+            mi1 = types.InlineKeyboardMarkup()
+            i1 = types.InlineKeyboardButton(text='Решение', callback_data="t12_4R")
+            mi1.add(i1)
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы ответили <b>неверно</b>.\n"
+                             f"Можете посмотреть решение",
+                             reply_markup=mi1, parse_mode='html')
+
+    def t12_5A(message):
+        with open("tmp/Task12/5/answer", encoding='utf8') as f:
+            d = f.read().split()[0]
+        if message.text == d:
+            con = sqlite3.connect(db_name)
+            cur = con.cursor()
+            command = f"""UPDATE "Task12" SET "5" = '1' WHERE id = {int(message.from_user.id)}"""
+            cur.execute(command)
+            con.commit()
+            cur.close()
+            t12_up(int(message.from_user.id))
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы правильно решили задачу\n"
+                             f"Ваш результат учтен",
+                             reply_markup=task1_markup, parse_mode='html')
+        else:
+            mi1 = types.InlineKeyboardMarkup()
+            i1 = types.InlineKeyboardButton(text='Решение', callback_data="t12_5R")
+            mi1.add(i1)
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы ответили <b>неверно</b>.\n"
+                             f"Можете посмотреть решение",
+                             reply_markup=mi1, parse_mode='html')
+
+    def t12_6A(message):
+        with open("tmp/Task12/6/answer", encoding='utf8') as f:
+            d = f.read().split()[0]
+        if message.text == d:
+            con = sqlite3.connect(db_name)
+            cur = con.cursor()
+            command = f"""UPDATE "Task12" SET "6" = '1' WHERE id = {int(message.from_user.id)}"""
+            cur.execute(command)
+            con.commit()
+            cur.close()
+            t12_up(int(message.from_user.id))
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы правильно решили задачу\n"
+                             f"Ваш результат учтен",
+                             reply_markup=task1_markup, parse_mode='html')
+        else:
+            mi1 = types.InlineKeyboardMarkup()
+            i1 = types.InlineKeyboardButton(text='Решение', callback_data="t12_6R")
+            mi1.add(i1)
+            bot.send_message(message.chat.id,
+                             f"<b><u>{message.from_user.username}</u></b>, вы ответили <b>неверно</b>.\n"
+                             f"Можете посмотреть решение",
+                             reply_markup=mi1, parse_mode='html')
+
+    def t12_up(idd):
+        con = sqlite3.connect(db_name)
+        cur = con.cursor()
+        command = f"""Select * from Task12 WHERE id = {idd}"""
+        result = cur.execute(command).fetchall()
+        curent = round(sum(result[0][1:7]) / 6 * 100)
+        command = f"""UPDATE "Task12" SET "Total" = {curent} WHERE id = {idd}"""
+        cur.execute(command)
+        con.commit()
+        cur.close()
+
     @bot.callback_query_handler(func=lambda call: True)
     def task(call):
         idd = call.message.chat.id
@@ -1385,7 +2647,7 @@ Task23,Task24,Task25,Task26,Task27 WHERE User.id = {int(message.from_user.id)}""
                     phot.close()
                 if call.data == "t1_1A":
                     tb = bot.send_message(idd,
-                                          "Ваш ответ:\n(это должно быть натуральное, "
+                                          "Ваш ответ:\n(это должно быть целое число, "
                                           "запишите его без лишних запятых и знаков. Например: 25)")
                     bot.register_next_step_handler(tb, t1_1A)
                 if call.data == "t1_1R":
@@ -1411,7 +2673,7 @@ Task23,Task24,Task25,Task26,Task27 WHERE User.id = {int(message.from_user.id)}""
                     phot.close()
                 if call.data == "t1_2A":
                     tb = bot.send_message(idd,
-                                          "Ваш ответ:\n(это должно быть натуральное, "
+                                          "Ваш ответ:\n(это должно быть целое число, "
                                           "запишите его без лишних запятых и знаков. Например: 25)")
                     bot.register_next_step_handler(tb, t1_2A)
                 if call.data == "t1_2R":
@@ -1437,7 +2699,7 @@ Task23,Task24,Task25,Task26,Task27 WHERE User.id = {int(message.from_user.id)}""
                     phot.close()
                 if call.data == "t1_3A":
                     tb = bot.send_message(idd,
-                                          "Ваш ответ:\n(это должно быть натуральное, "
+                                          "Ваш ответ:\n(это должно быть целое число, "
                                           "запишите его без лишних запятых и знаков. Например: 25)")
                     bot.register_next_step_handler(tb, t1_3A)
                 if call.data == "t1_3R":
@@ -1541,7 +2803,7 @@ Task23,Task24,Task25,Task26,Task27 WHERE User.id = {int(message.from_user.id)}""
                     phot.close()
                 if call.data == "t2_4A":
                     tb = bot.send_message(idd,
-                                          "Ваш ответ:\n(это должно быть натуральное, "
+                                          "Ваш ответ:\n(это должно быть целое число, "
                                           "запишите его без лишних запятых и знаков. Например: 25)")
                     bot.register_next_step_handler(tb, t2_4A)
                 if call.data == "t2_4R":
@@ -1556,130 +2818,1136 @@ Task23,Task24,Task25,Task26,Task27 WHERE User.id = {int(message.from_user.id)}""
                     phot.close()
 
                 if call.data == "t3_1":
-                    pass
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t3_1A")
+                    i2 = types.InlineKeyboardButton(text='Решение', callback_data="t3_1R")
+                    mi1.add(i1).add(i2)
+                    phot = open("tmp/Task3/1/task.png", "rb")
+                    bot.send_message(idd, f"Задание 3.1:\n<b>Задания для подготовки 1</b>",
+                                     parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
+                if call.data == "t3_1A":
+                    tb = bot.send_message(idd,
+                                          "Ваш ответ:\n(это должно быть целое число, "
+                                          "запишите его без лишних запятых и знаков. Например: 25)")
+                    bot.register_next_step_handler(tb, t3_1A)
+                if call.data == "t3_1R":
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t3_1A")
+                    mi1.add(i1)
+                    with open("tmp/Task3/1/answer", encoding='utf8') as f:
+                        d = f.read().split()
+                    phot = open('tmp/Task3/1/solution1.png', "rb")
+                    phot2 = open('tmp/Task3/1/solution2.png', "rb")
+                    bot.send_message(idd, f"<b>Решение</b> задания 3.1\n<b>Ответ:</b> {' '.join(d)}", parse_mode='html')
+                    bot.send_photo(idd, phot)
+                    bot.send_photo(idd, phot2, reply_markup=mi1)
+                    phot.close()
+                    phot2.close()
 
                 if call.data == "t3_2":
-                    pass
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t3_2A")
+                    i2 = types.InlineKeyboardButton(text='Решение', callback_data="t3_2R")
+                    mi1.add(i1).add(i2)
+                    phot = open("tmp/Task3/2/task.png", "rb")
+                    bot.send_message(idd, f"Задание 3.2:\n<b>Задания для подготовки 1</b>",
+                                     parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
+                if call.data == "t3_2A":
+                    tb = bot.send_message(idd,
+                                          "Ваш ответ:\n(это должно быть целое число, "
+                                          "запишите его без лишних запятых и знаков. Например: 25)")
+                    bot.register_next_step_handler(tb, t3_2A)
+                if call.data == "t3_2R":
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t3_2A")
+                    mi1.add(i1)
+                    with open("tmp/Task3/2/answer", encoding='utf8') as f:
+                        d = f.read().split()
+                    phot = open('tmp/Task3/2/solution1.png', "rb")
+                    phot2 = open('tmp/Task3/2/solution2.png', "rb")
+                    bot.send_message(idd, f"<b>Решение</b> задания 3.2\n<b>Ответ:</b> {' '.join(d)}", parse_mode='html')
+                    bot.send_photo(idd, phot)
+                    bot.send_photo(idd, phot2, reply_markup=mi1)
+                    phot.close()
+                    phot2.close()
 
                 if call.data == "t4_1":
-                    pass
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t4_1A")
+                    i2 = types.InlineKeyboardButton(text='Решение', callback_data="t4_1R")
+                    mi1.add(i1).add(i2)
+                    phot = open("tmp/Task4/1/task.png", "rb")
+                    bot.send_message(idd, f"Задание 4.1:\n<b>Выбор кода при неиспользуемых сигналах</b>",
+                                     parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
+                if call.data == "t4_1A":
+                    tb = bot.send_message(idd,
+                                          "Ваш ответ:\n(это должно быть целое число, "
+                                          "запишите его без лишних запятых и знаков. Например: 25)")
+                    bot.register_next_step_handler(tb, t4_1A)
+                if call.data == "t4_1R":
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t4_1A")
+                    mi1.add(i1)
+                    with open("tmp/Task4/1/answer", encoding='utf8') as f:
+                        d = f.read().split()
+                    phot = open('tmp/Task4/1/solution.png', "rb")
+                    bot.send_message(idd, f"<b>Решение</b> задания 4.1\n<b>Ответ:</b> {' '.join(d)}", parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
 
                 if call.data == "t4_2":
-                    pass
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t4_2A")
+                    i2 = types.InlineKeyboardButton(text='Решение', callback_data="t4_2R")
+                    mi1.add(i1).add(i2)
+                    phot = open("tmp/Task4/2/task.png", "rb")
+                    bot.send_message(idd,
+                                     f"Задание 4.2:\n<b>Шифрование по известному коду и перевод в различные СС</b>",
+                                     parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
+                if call.data == "t4_2A":
+                    tb = bot.send_message(idd,
+                                          "Ваш ответ:\n(это должно быть целое число число в шестнадцатеричной системе "
+                                          "счисления, запишите его без лишних запятых и знаков. Например: А94)")
+                    bot.register_next_step_handler(tb, t4_2A)
+                if call.data == "t4_2R":
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t4_2A")
+                    mi1.add(i1)
+                    with open("tmp/Task4/2/answer", encoding='utf8') as f:
+                        d = f.read().split()
+                    phot = open('tmp/Task4/2/solution.png', "rb")
+                    bot.send_message(idd, f"<b>Решение</b> задания 4.2\n<b>Ответ:</b> {' '.join(d)}", parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
 
                 if call.data == "t4_3":
-                    pass
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t4_3A")
+                    i2 = types.InlineKeyboardButton(text='Решение', callback_data="t4_3R")
+                    mi1.add(i1).add(i2)
+                    phot = open("tmp/Task4/3/task.png", "rb")
+                    bot.send_message(idd,
+                                     f"Задание 4.3:\n<b>Расшифровка сообщений</b>",
+                                     parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
+                if call.data == "t4_3A":
+                    tb = bot.send_message(idd,
+                                          "Ваш ответ:\n(это должно быть строка из заглавных латинских букв"
+                                          "счисления, запишите его без лишних запятых и знаков. Например: АBVD)")
+                    bot.register_next_step_handler(tb, t4_3A)
+                if call.data == "t4_3R":
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t4_3A")
+                    mi1.add(i1)
+                    with open("tmp/Task4/3/answer", encoding='utf8') as f:
+                        d = f.read().split()
+                    phot = open('tmp/Task4/3/solution.png', "rb")
+                    bot.send_message(idd, f"<b>Решение</b> задания 4.3\n<b>Ответ:</b> {' '.join(d)}", parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
 
                 if call.data == "t4_4":
-                    pass
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t4_4A")
+                    i2 = types.InlineKeyboardButton(text='Решение', callback_data="t4_4R")
+                    mi1.add(i1).add(i2)
+                    phot = open("tmp/Task4/4/task.png", "rb")
+                    bot.send_message(idd,
+                                     f"Задание 4.4:\n<b>Передача информации. Выбор кода</b>",
+                                     parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
+                if call.data == "t4_4A":
+                    tb = bot.send_message(idd,
+                                          "Ваш ответ:\n(это должно быть целое число число в двоичной системе "
+                                          "счисления, запишите его без лишних запятых и знаков. Например: 100101)")
+                    bot.register_next_step_handler(tb, t4_4A)
+                if call.data == "t4_4R":
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t4_4A")
+                    mi1.add(i1)
+                    with open("tmp/Task4/4/answer", encoding='utf8') as f:
+                        d = f.read().split()
+                    phot = open('tmp/Task4/4/solution.png', "rb")
+                    bot.send_message(idd, f"<b>Решение</b> задания 4.4\n<b>Ответ:</b> {' '.join(d)}", parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
 
                 if call.data == "t5_1":
-                    pass
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t5_1A")
+                    i2 = types.InlineKeyboardButton(text='Решение', callback_data="t5_1R")
+                    mi1.add(i1).add(i2)
+                    phot = open("tmp/Task5/1/task.png", "rb")
+                    bot.send_message(idd, f"Задание 5.1:\n<b>Исполнители на плоскости</b>",
+                                     parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
+                if call.data == "t5_1A":
+                    tb = bot.send_message(idd,
+                                          "Ваш ответ:\n(это должно быть целое число, "
+                                          "запишите его без лишних запятых и знаков. Например: 25)")
+                    bot.register_next_step_handler(tb, t5_1A)
+                if call.data == "t5_1R":
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t5_1A")
+                    mi1.add(i1)
+                    with open("tmp/Task5/1/answer", encoding='utf8') as f:
+                        d = f.read().split()
+                    phot = open('tmp/Task5/1/solution.png', "rb")
+                    bot.send_message(idd, f"<b>Решение</b> задания 5.1\n<b>Ответ:</b> {' '.join(d)}", parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
 
                 if call.data == "t5_2":
-                    pass
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t5_2A")
+                    i2 = types.InlineKeyboardButton(text='Решение', callback_data="t5_2R")
+                    mi1.add(i1).add(i2)
+                    phot = open("tmp/Task5/2/task.png", "rb")
+                    bot.send_message(idd,
+                                     f"Задание 5.2:\n<b>Посимвольное двоичное преобразование</b>",
+                                     parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
+                if call.data == "t5_2A":
+                    tb = bot.send_message(idd,
+                                          "Ваш ответ:\n(это должно быть целое число, "
+                                          "запишите его без лишних запятых и знаков. Например: 25)")
+                    bot.register_next_step_handler(tb, t5_2A)
+                if call.data == "t5_2R":
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t5_2A")
+                    mi1.add(i1)
+                    with open("tmp/Task5/2/answer", encoding='utf8') as f:
+                        d = f.read().split()
+                    phot = open('tmp/Task5/2/solution.png', "rb")
+                    bot.send_message(idd, f"<b>Решение</b> задания 5.2\n<b>Ответ:</b> {' '.join(d)}", parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
 
                 if call.data == "t5_3":
-                    pass
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t5_3A")
+                    i2 = types.InlineKeyboardButton(text='Решение', callback_data="t5_3R")
+                    mi1.add(i1).add(i2)
+                    phot = open("tmp/Task5/3/task.png", "rb")
+                    bot.send_message(idd,
+                                     f"Задание 5.3:\n<b>Разные задачи</b>",
+                                     parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
+                if call.data == "t5_3A":
+                    tb = bot.send_message(idd,
+                                          "Ваш ответ:\n(это должно быть целое число, "
+                                          "запишите его без лишних запятых и знаков. Например: 25)")
+                    bot.register_next_step_handler(tb, t5_3A)
+                if call.data == "t5_3R":
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t5_3A")
+                    mi1.add(i1)
+                    with open("tmp/Task5/3/answer", encoding='utf8') as f:
+                        d = f.read().split()
+                    phot = open('tmp/Task5/3/solution.png', "rb")
+                    bot.send_message(idd, f"<b>Решение</b> задания 5.3\n<b>Ответ:</b> {' '.join(d)}", parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
 
                 if call.data == "t5_4":
-                    pass
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t5_4A")
+                    i2 = types.InlineKeyboardButton(text='Решение', callback_data="t5_4R")
+                    mi1.add(i1).add(i2)
+                    phot = open("tmp/Task5/4/task.png", "rb")
+                    bot.send_message(idd,
+                                     f"Задание 5.4:\n<b>Арифмометры</b>",
+                                     parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
+                if call.data == "t5_4A":
+                    tb = bot.send_message(idd,
+                                          "Ваш ответ:\n(это должна быть последовательность из 1 и 2, "
+                                          "запишите его без лишних запятых и знаков. Например: 212221)")
+                    bot.register_next_step_handler(tb, t5_4A)
+                if call.data == "t5_4R":
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t5_4A")
+                    mi1.add(i1)
+                    with open("tmp/Task5/4/answer", encoding='utf8') as f:
+                        d = f.read().split()
+                    phot = open('tmp/Task5/4/solution.png', "rb")
+                    bot.send_message(idd, f"<b>Решение</b> задания 5.4\n<b>Ответ:</b> {' '.join(d)}", parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
 
                 if call.data == "t5_5":
-                    pass
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t5_5A")
+                    i2 = types.InlineKeyboardButton(text='Решение', callback_data="t5_5R")
+                    mi1.add(i1).add(i2)
+                    phot = open("tmp/Task5/5/task.png", "rb")
+                    bot.send_message(idd,
+                                     f"Задание 5.5:\n<b>Арифмометры с движением в обе стороны</b>",
+                                     parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
+                if call.data == "t5_5A":
+                    tb = bot.send_message(idd,
+                                          "Ваш ответ:\n(это должна быть последовательность из 1 и 2, "
+                                          "запишите его без лишних запятых и знаков. Например: 212221)")
+                    bot.register_next_step_handler(tb, t5_5A)
+                if call.data == "t5_5R":
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t5_5A")
+                    mi1.add(i1)
+                    with open("tmp/Task5/5/answer", encoding='utf8') as f:
+                        d = f.read().split()
+                    phot = open('tmp/Task5/5/solution.png', "rb")
+                    bot.send_message(idd, f"<b>Решение</b> задания 5.5\n<b>Ответ:</b> {' '.join(d)}", parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
 
                 if call.data == "t5_6":
-                    pass
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t5_6A")
+                    i2 = types.InlineKeyboardButton(text='Решение', callback_data="t5_6R")
+                    mi1.add(i1).add(i2)
+                    phot = open("tmp/Task5/6/task.png", "rb")
+                    bot.send_message(idd,
+                                     f"Задание 5.6:\n<b>Посимвольное десятичное преобразование</b>",
+                                     parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
+                if call.data == "t5_6A":
+                    tb = bot.send_message(idd,
+                                          "Ваш ответ:\n(это должно быть целое число, "
+                                          "запишите его без лишних запятых и знаков. Например: 25)")
+                    bot.register_next_step_handler(tb, t5_6A)
+                if call.data == "t5_6R":
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t5_6A")
+                    mi1.add(i1)
+                    with open("tmp/Task5/6/answer", encoding='utf8') as f:
+                        d = f.read().split()
+                    phot = open('tmp/Task5/6/solution.png', "rb")
+                    bot.send_message(idd, f"<b>Решение</b> задания 5.6\n<b>Ответ:</b> {' '.join(d)}", parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
 
                 if call.data == "t6_1":
-                    pass
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t6_1A")
+                    i2 = types.InlineKeyboardButton(text='Решение', callback_data="t6_1R")
+                    mi1.add(i1).add(i2)
+                    phot = open("tmp/Task6/1/task.png", "rb")
+                    bot.send_message(idd, f"Задание 6.1:\n<b>Две линейные функции</b>",
+                                     parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
+                if call.data == "t6_1A":
+                    tb = bot.send_message(idd,
+                                          "Ваш ответ:\n(это должно быть целое число, "
+                                          "запишите его без лишних запятых и знаков. Например: 25)")
+                    bot.register_next_step_handler(tb, t6_1A)
+                if call.data == "t6_1R":
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t6_1A")
+                    mi1.add(i1)
+                    with open("tmp/Task6/1/answer", encoding='utf8') as f:
+                        d = f.read().split()
+                    phot = open('tmp/Task6/1/solution.png', "rb")
+                    bot.send_message(idd, f"<b>Решение</b> задания 6.1\n<b>Ответ:</b> {' '.join(d)}", parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
 
                 if call.data == "t6_2":
-                    pass
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t6_2A")
+                    i2 = types.InlineKeyboardButton(text='Решение', callback_data="t6_2R")
+                    mi1.add(i1).add(i2)
+                    phot = open("tmp/Task6/2/task.png", "rb")
+                    bot.send_message(idd, f"Задание 6.2:\n<b>Сумма двух линейных функций</b>",
+                                     parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
+                if call.data == "t6_2A":
+                    tb = bot.send_message(idd,
+                                          "Ваш ответ:\n(это должно быть целое число, "
+                                          "запишите его без лишних запятых и знаков. Например: 25)")
+                    bot.register_next_step_handler(tb, t6_2A)
+                if call.data == "t6_2R":
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t6_2A")
+                    mi1.add(i1)
+                    with open("tmp/Task6/2/answer", encoding='utf8') as f:
+                        d = f.read().split()
+                    phot = open('tmp/Task6/2/solution.png', "rb")
+                    bot.send_message(idd, f"<b>Решение</b> задания 6.2\n<b>Ответ:</b> {' '.join(d)}", parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
 
                 if call.data == "t6_3":
-                    pass
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t6_3A")
+                    i2 = types.InlineKeyboardButton(text='Решение', callback_data="t6_3R")
+                    mi1.add(i1).add(i2)
+                    phot = open("tmp/Task6/3/task.png", "rb")
+                    bot.send_message(idd, f"Задание 6.3:\n<b>Арифметическая прогрессия</b>",
+                                     parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
+                if call.data == "t6_3A":
+                    tb = bot.send_message(idd,
+                                          "Ваш ответ:\n(это должно быть целое число, "
+                                          "запишите его без лишних запятых и знаков. Например: 25)")
+                    bot.register_next_step_handler(tb, t6_3A)
+                if call.data == "t6_3R":
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t6_3A")
+                    mi1.add(i1)
+                    with open("tmp/Task6/3/answer", encoding='utf8') as f:
+                        d = f.read().split()
+                    phot = open('tmp/Task6/3/solution.png', "rb")
+                    bot.send_message(idd, f"<b>Решение</b> задания 6.3\n<b>Ответ:</b> {' '.join(d)}", parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
 
                 if call.data == "t6_4":
-                    pass
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t6_4A")
+                    i2 = types.InlineKeyboardButton(text='Решение', callback_data="t6_4R")
+                    mi1.add(i1).add(i2)
+                    phot = open("tmp/Task6/4/task.png", "rb")
+                    bot.send_message(idd, f"Задание 6.4:\n<b>Условие выполнения цикла while</b>",
+                                     parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
+                if call.data == "t6_4A":
+                    tb = bot.send_message(idd,
+                                          "Ваш ответ:\n(это должно быть целое число, "
+                                          "запишите его без лишних запятых и знаков. Например: 25)")
+                    bot.register_next_step_handler(tb, t6_4A)
+                if call.data == "t6_4R":
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t6_4A")
+                    mi1.add(i1)
+                    with open("tmp/Task6/4/answer", encoding='utf8') as f:
+                        d = f.read().split()
+                    phot = open('tmp/Task6/4/solution.png', "rb")
+                    bot.send_message(idd, f"<b>Решение</b> задания 6.4\n<b>Ответ:</b> {' '.join(d)}", parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
 
                 if call.data == "t7_1":
-                    pass
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t7_1A")
+                    i2 = types.InlineKeyboardButton(text='Решение', callback_data="t7_1R")
+                    mi1.add(i1).add(i2)
+                    phot = open("tmp/Task7/1/task.png", "rb")
+                    bot.send_message(idd, f"Задание 7.1:\n<b>Передача звуковых файлов</b>",
+                                     parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
+                if call.data == "t7_1A":
+                    tb = bot.send_message(idd,
+                                          "Ваш ответ:\n(это должно быть целое число, "
+                                          "запишите его без лишних запятых и знаков. Например: 25)")
+                    bot.register_next_step_handler(tb, t7_1A)
+                if call.data == "t7_1R":
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t7_1A")
+                    mi1.add(i1)
+                    with open("tmp/Task7/1/answer", encoding='utf8') as f:
+                        d = f.read().split()
+                    phot = open('tmp/Task7/1/solution.png', "rb")
+                    bot.send_message(idd, f"<b>Решение</b> задания 7.1\n<b>Ответ:</b> {' '.join(d)}", parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
 
                 if call.data == "t7_2":
-                    pass
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t7_2A")
+                    i2 = types.InlineKeyboardButton(text='Решение', callback_data="t7_2R")
+                    mi1.add(i1).add(i2)
+                    phot = open("tmp/Task7/2/task.png", "rb")
+                    bot.send_message(idd, f"Задание 7.2:\n<b>Передача изображений</b>",
+                                     parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
+                if call.data == "t7_2A":
+                    tb = bot.send_message(idd,
+                                          "Ваш ответ:\n(это должно быть целое число, "
+                                          "запишите его без лишних запятых и знаков. Например: 25)")
+                    bot.register_next_step_handler(tb, t7_2A)
+                if call.data == "t7_2R":
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t7_2A")
+                    mi1.add(i1)
+                    with open("tmp/Task7/2/answer", encoding='utf8') as f:
+                        d = f.read().split()
+                    phot = open('tmp/Task7/2/solution.png', "rb")
+                    bot.send_message(idd, f"<b>Решение</b> задания 7.2\n<b>Ответ:</b> {' '.join(d)}", parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
 
                 if call.data == "t7_3":
-                    pass
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t7_3A")
+                    i2 = types.InlineKeyboardButton(text='Решение', callback_data="t7_3R")
+                    mi1.add(i1).add(i2)
+                    phot = open("tmp/Task7/3/task.png", "rb")
+                    bot.send_message(idd, f"Задание 7.3:\n<b>Передача текстовых файлов</b>",
+                                     parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
+                if call.data == "t7_3A":
+                    tb = bot.send_message(idd,
+                                          "Ваш ответ:\n(это должно быть целое число, "
+                                          "запишите его без лишних запятых и знаков. Например: 25)")
+                    bot.register_next_step_handler(tb, t7_3A)
+                if call.data == "t7_3R":
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t7_3A")
+                    mi1.add(i1)
+                    with open("tmp/Task7/3/answer", encoding='utf8') as f:
+                        d = f.read().split()
+                    phot = open('tmp/Task7/3/solution.png', "rb")
+                    bot.send_message(idd, f"<b>Решение</b> задания 7.3\n<b>Ответ:</b> {' '.join(d)}", parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
 
                 if call.data == "t7_4":
-                    pass
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t7_4A")
+                    i2 = types.InlineKeyboardButton(text='Решение', callback_data="t7_4R")
+                    mi1.add(i1).add(i2)
+                    phot = open("tmp/Task7/4/task.png", "rb")
+                    bot.send_message(idd, f"Задание 7.4:\n<b>Хранение звуковых файлов</b>",
+                                     parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
+                if call.data == "t7_4A":
+                    tb = bot.send_message(idd,
+                                          "Ваш ответ:\n(это должно быть целое число, "
+                                          "запишите его без лишних запятых и знаков. Например: 25)")
+                    bot.register_next_step_handler(tb, t7_4A)
+                if call.data == "t7_4R":
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t7_4A")
+                    mi1.add(i1)
+                    with open("tmp/Task7/4/answer", encoding='utf8') as f:
+                        d = f.read().split()
+                    phot = open('tmp/Task7/4/solution.png', "rb")
+                    bot.send_message(idd, f"<b>Решение</b> задания 7.4\n<b>Ответ:</b> {' '.join(d)}", parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
 
                 if call.data == "t7_5":
-                    pass
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t7_5A")
+                    i2 = types.InlineKeyboardButton(text='Решение', callback_data="t7_5R")
+                    mi1.add(i1).add(i2)
+                    phot = open("tmp/Task7/5/task.png", "rb")
+                    bot.send_message(idd, f"Задание 7.5:\n<b>Сравнение двух способов передачи данных</b>",
+                                     parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
+                if call.data == "t7_5A":
+                    tb = bot.send_message(idd, "Ваш ответ:\n(Это должен быть вариант ответа кириллицей А или Б и "
+                                               "целое число число, запишите его без лишних запятых и знаков. Например: "
+                                               "А223)")
+                    bot.register_next_step_handler(tb, t7_5A)
+                if call.data == "t7_5R":
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t7_5A")
+                    mi1.add(i1)
+                    with open("tmp/Task7/5/answer", encoding='utf8') as f:
+                        d = f.read().split()
+                    phot = open('tmp/Task7/5/solution.png', "rb")
+                    bot.send_message(idd, f"<b>Решение</b> задания 7.5\n<b>Ответ:</b> {' '.join(d)}", parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
 
                 if call.data == "t7_6":
-                    pass
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t7_6A")
+                    i2 = types.InlineKeyboardButton(text='Решение', callback_data="t7_6R")
+                    mi1.add(i1).add(i2)
+                    phot = open("tmp/Task7/6/task.png", "rb")
+                    bot.send_message(idd, f"Задание 7.6:\n<b>Определение времени передачи файла</b>",
+                                     parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
+                if call.data == "t7_6A":
+                    tb = bot.send_message(idd,
+                                          "Ваш ответ:\n(это должно быть целое число, "
+                                          "запишите его без лишних запятых и знаков. Например: 25)")
+                    bot.register_next_step_handler(tb, t7_6A)
+                if call.data == "t7_6R":
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t7_6A")
+                    mi1.add(i1)
+                    with open("tmp/Task7/6/answer", encoding='utf8') as f:
+                        d = f.read().split()
+                    phot = open('tmp/Task7/6/solution.png', "rb")
+                    bot.send_message(idd, f"<b>Решение</b> задания 7.6\n<b>Ответ:</b> {' '.join(d)}", parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
 
                 if call.data == "t7_7":
-                    pass
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t7_7A")
+                    i2 = types.InlineKeyboardButton(text='Решение', callback_data="t7_7R")
+                    mi1.add(i1).add(i2)
+                    phot = open("tmp/Task7/7/task.png", "rb")
+                    bot.send_message(idd, f"Задание 7.7:\n<b>Хранение изображений</b>",
+                                     parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
+                if call.data == "t7_7A":
+                    tb = bot.send_message(idd,
+                                          "Ваш ответ:\n(это должно быть целое число, "
+                                          "запишите его без лишних запятых и знаков. Например: 25)")
+                    bot.register_next_step_handler(tb, t7_7A)
+                if call.data == "t7_7R":
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t7_7A")
+                    mi1.add(i1)
+                    with open("tmp/Task7/7/answer", encoding='utf8') as f:
+                        d = f.read().split()
+                    phot = open('tmp/Task7/7/solution.png', "rb")
+                    bot.send_message(idd, f"<b>Решение</b> задания 7.7\n<b>Ответ:</b> {' '.join(d)}", parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
 
                 if call.data == "t7_8":
-                    pass
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t7_8A")
+                    i2 = types.InlineKeyboardButton(text='Решение', callback_data="t7_8R")
+                    mi1.add(i1).add(i2)
+                    phot = open("tmp/Task7/8/task.png", "rb")
+                    bot.send_message(idd, f"Задание 7.8:\n<b>Определение размера записанного файла</b>",
+                                     parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
+                if call.data == "t7_8A":
+                    tb = bot.send_message(idd,
+                                          "Ваш ответ:\n(это должно быть целое число, "
+                                          "запишите его без лишних запятых и знаков. Например: 25)")
+                    bot.register_next_step_handler(tb, t7_8A)
+                if call.data == "t7_8R":
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t7_8A")
+                    mi1.add(i1)
+                    with open("tmp/Task7/8/answer", encoding='utf8') as f:
+                        d = f.read().split()
+                    phot = open('tmp/Task7/8/solution.png', "rb")
+                    bot.send_message(idd, f"<b>Решение</b> задания 7.8\n<b>Ответ:</b> {' '.join(d)}", parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
 
                 if call.data == "t8_1":
-                    pass
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t8_1A")
+                    i2 = types.InlineKeyboardButton(text='Решение', callback_data="t8_1R")
+                    mi1.add(i1).add(i2)
+                    phot = open("tmp/Task8/1/task.png", "rb")
+                    bot.send_message(idd, f"Задание 8.1:\n<b>Подсчет количества слов</b>",
+                                     parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
+                if call.data == "t8_1A":
+                    tb = bot.send_message(idd,
+                                          "Ваш ответ:\n(это должно быть целое число, "
+                                          "запишите его без лишних запятых и знаков. Например: 25)")
+                    bot.register_next_step_handler(tb, t8_1A)
+                if call.data == "t8_1R":
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t8_1A")
+                    mi1.add(i1)
+                    with open("tmp/Task8/1/answer", encoding='utf8') as f:
+                        d = f.read().split()
+                    phot = open('tmp/Task8/1/solution.png', "rb")
+                    bot.send_message(idd, f"<b>Решение</b> задания 8.1\n<b>Ответ:</b> {' '.join(d)}", parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
 
                 if call.data == "t8_2":
-                    pass
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t8_2A")
+                    i2 = types.InlineKeyboardButton(text='Решение', callback_data="t8_2R")
+                    mi1.add(i1).add(i2)
+                    phot = open("tmp/Task8/2/task.png", "rb")
+                    bot.send_message(idd, f"Задание 8.2:\n<b>Подсчет количества слов с ограничениями</b>",
+                                     parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
+                if call.data == "t8_2A":
+                    tb = bot.send_message(idd,
+                                          "Ваш ответ:\n(это должно быть целое число, "
+                                          "запишите его без лишних запятых и знаков. Например: 25)")
+                    bot.register_next_step_handler(tb, t8_2A)
+                if call.data == "t8_2R":
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t8_2A")
+                    mi1.add(i1)
+                    with open("tmp/Task8/2/answer", encoding='utf8') as f:
+                        d = f.read().split()
+                    phot = open('tmp/Task8/2/solution.png', "rb")
+                    bot.send_message(idd, f"<b>Решение</b> задания 8.2\n<b>Ответ:</b> {' '.join(d)}", parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
 
                 if call.data == "t8_3":
-                    pass
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t8_3A")
+                    i2 = types.InlineKeyboardButton(text='Решение', callback_data="t8_3R")
+                    mi1.add(i1).add(i2)
+                    phot = open("tmp/Task8/3/task.png", "rb")
+                    bot.send_message(idd, f"Задание 8.3:\n<b>Последовательность лампочек</b>",
+                                     parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
+                if call.data == "t8_3A":
+                    tb = bot.send_message(idd,
+                                          "Ваш ответ:\n(это должно быть целое число, "
+                                          "запишите его без лишних запятых и знаков. Например: 25)")
+                    bot.register_next_step_handler(tb, t8_3A)
+                if call.data == "t8_3R":
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t8_3A")
+                    mi1.add(i1)
+                    with open("tmp/Task8/3/answer", encoding='utf8') as f:
+                        d = f.read().split()
+                    phot = open('tmp/Task8/3/solution.png', "rb")
+                    bot.send_message(idd, f"<b>Решение</b> задания 8.3\n<b>Ответ:</b> {' '.join(d)}", parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
 
                 if call.data == "t8_4":
-                    pass
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t8_4A")
+                    i2 = types.InlineKeyboardButton(text='Решение', callback_data="t8_4R")
+                    mi1.add(i1).add(i2)
+                    phot = open("tmp/Task8/4/task.png", "rb")
+                    bot.send_message(idd, f"Задание 8.4:\n<b>Последовательность сигнальных ракет</b>",
+                                     parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
+                if call.data == "t8_4A":
+                    tb = bot.send_message(idd,
+                                          "Ваш ответ:\n(это должно быть целое число, "
+                                          "запишите его без лишних запятых и знаков. Например: 25)")
+                    bot.register_next_step_handler(tb, t8_4A)
+                if call.data == "t8_4R":
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t8_4A")
+                    mi1.add(i1)
+                    with open("tmp/Task8/4/answer", encoding='utf8') as f:
+                        d = f.read().split()
+                    phot = open('tmp/Task8/4/solution.png', "rb")
+                    bot.send_message(idd, f"<b>Решение</b> задания 8.4\n<b>Ответ:</b> {' '.join(d)}", parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
 
                 if call.data == "t8_5":
-                    pass
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t8_5A")
+                    i2 = types.InlineKeyboardButton(text='Решение', callback_data="t8_5R")
+                    mi1.add(i1).add(i2)
+                    phot = open("tmp/Task8/5/task.png", "rb")
+                    bot.send_message(idd, f"Задание 8.5:\n<b>Разное</b>",
+                                     parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
+                if call.data == "t8_5A":
+                    tb = bot.send_message(idd,
+                                          "Ваш ответ:\n(это должно быть целое число, "
+                                          "запишите его без лишних запятых и знаков. Например: 25)")
+                    bot.register_next_step_handler(tb, t8_5A)
+                if call.data == "t8_5R":
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t8_5A")
+                    mi1.add(i1)
+                    with open("tmp/Task8/5/answer", encoding='utf8') as f:
+                        d = f.read().split()
+                    phot = open('tmp/Task8/5/solution.png', "rb")
+                    bot.send_message(idd, f"<b>Решение</b> задания 8.5\n<b>Ответ:</b> {' '.join(d)}", parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
 
                 if call.data == "t8_6":
-                    pass
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t8_6A")
+                    i2 = types.InlineKeyboardButton(text='Решение', callback_data="t8_6R")
+                    mi1.add(i1).add(i2)
+                    phot = open("tmp/Task8/6/task.png", "rb")
+                    bot.send_message(idd, f"Задание 8.6:\n<b>Подсчет количества разных последовательностей</b>",
+                                     parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
+                if call.data == "t8_6A":
+                    tb = bot.send_message(idd,
+                                          "Ваш ответ:\n(это должно быть целое число, "
+                                          "запишите его без лишних запятых и знаков. Например: 25)")
+                    bot.register_next_step_handler(tb, t8_6A)
+                if call.data == "t8_6R":
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t8_6A")
+                    mi1.add(i1)
+                    with open("tmp/Task8/6/answer", encoding='utf8') as f:
+                        d = f.read().split()
+                    phot = open('tmp/Task8/6/solution.png', "rb")
+                    bot.send_message(idd, f"<b>Решение</b> задания 8.6\n<b>Ответ:</b> {' '.join(d)}", parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
 
                 if call.data == "t8_7":
-                    pass
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t8_7A")
+                    i2 = types.InlineKeyboardButton(text='Решение', callback_data="t8_7R")
+                    mi1.add(i1).add(i2)
+                    phot = open("tmp/Task8/7/task.png", "rb")
+                    bot.send_message(idd, f"Задание 8.7:\n<b>Слова по порядку</b>",
+                                     parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
+                if call.data == "t8_7A":
+                    tb = bot.send_message(idd,
+                                          "Ваш ответ:\n(это должна быть последовательность букв кириллицей, "
+                                          "запишите его без лишних запятых и знаков. Например: ОААУУ)")
+                    bot.register_next_step_handler(tb, t8_7A)
+                if call.data == "t8_7R":
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t8_7A")
+                    mi1.add(i1)
+                    with open("tmp/Task8/7/answer", encoding='utf8') as f:
+                        d = f.read().split()
+                    phot = open('tmp/Task8/7/solution.png', "rb")
+                    bot.send_message(idd, f"<b>Решение</b> задания 8.7\n<b>Ответ:</b> {' '.join(d)}", parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
 
                 if call.data == "t9_1":
-                    pass
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t9_1A")
+                    i2 = types.InlineKeyboardButton(text='Решение', callback_data="t9_1R")
+                    mi1.add(i1).add(i2)
+                    phot = open("tmp/Task9/1/task.png", "rb")
+                    docc = open("tmp/Task9/1/9_1.xlsx", "rb")
+                    bot.send_message(idd, f"Задание 9.1:\n<b>Задания для подготовки 1</b>",
+                                     parse_mode='html')
+                    bot.send_photo(idd, phot)
+                    bot.send_document(idd, docc, reply_markup=mi1)
+                    docc.close()
+                    phot.close()
+                if call.data == "t9_1A":
+                    tb = bot.send_message(idd,
+                                          "Ваш ответ:\n(это должно быть целое число, "
+                                          "запишите его без лишних запятых и знаков. Например: 25)")
+                    bot.register_next_step_handler(tb, t9_1A)
+                if call.data == "t9_1R":
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t9_1A")
+                    mi1.add(i1)
+                    with open("tmp/Task9/1/answer", encoding='utf8') as f:
+                        d = f.read().split()
+                    phot = open('tmp/Task9/1/solution.png', "rb")
+                    bot.send_message(idd, f"<b>Решение</b> задания 9.1\n<b>Ответ:</b> {' '.join(d)}", parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
 
                 if call.data == "t9_2":
-                    pass
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t9_2A")
+                    i2 = types.InlineKeyboardButton(text='Решение', callback_data="t9_2R")
+                    mi1.add(i1).add(i2)
+                    phot = open("tmp/Task9/2/task.png", "rb")
+                    docc = open("tmp/Task9/2/9_2.xlsx", "rb")
+                    bot.send_message(idd, f"Задание 9.2:\n<b>Задания для подготовки 2</b>",
+                                     parse_mode='html')
+                    bot.send_photo(idd, phot)
+                    bot.send_document(idd, docc, reply_markup=mi1)
+                    docc.close()
+                    phot.close()
+                if call.data == "t9_2A":
+                    tb = bot.send_message(idd,
+                                          "Ваш ответ:\n(это должно быть целое число, "
+                                          "запишите его без лишних запятых и знаков. Например: 25)")
+                    bot.register_next_step_handler(tb, t9_2A)
+                if call.data == "t9_2R":
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t9_2A")
+                    mi1.add(i1)
+                    with open("tmp/Task9/2/answer", encoding='utf8') as f:
+                        d = f.read().split()
+                    phot = open('tmp/Task9/2/solution.png', "rb")
+                    bot.send_message(idd, f"<b>Решение</b> задания 9.2\n<b>Ответ:</b> {' '.join(d)}", parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
 
                 if call.data == "t9_3":
-                    pass
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t9_3A")
+                    i2 = types.InlineKeyboardButton(text='Решение', callback_data="t9_3R")
+                    mi1.add(i1).add(i2)
+                    phot = open("tmp/Task9/3/task.png", "rb")
+                    docc = open("tmp/Task9/3/9_3.xlsx", "rb")
+                    bot.send_message(idd, f"Задание 9.3:\n<b>Задания для подготовки 3</b>",
+                                     parse_mode='html')
+                    bot.send_photo(idd, phot)
+                    bot.send_document(idd, docc, reply_markup=mi1)
+                    docc.close()
+                    phot.close()
+                if call.data == "t9_3A":
+                    tb = bot.send_message(idd,
+                                          "Ваш ответ:\n(это должно быть целое число, "
+                                          "запишите его без лишних запятых и знаков. Например: -25)")
+                    bot.register_next_step_handler(tb, t9_3A)
+                if call.data == "t9_3R":
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t9_3A")
+                    mi1.add(i1)
+                    with open("tmp/Task9/3/answer", encoding='utf8') as f:
+                        d = f.read().split()
+                    phot = open('tmp/Task9/3/solution.png', "rb")
+                    bot.send_message(idd, f"<b>Решение</b> задания 9.3\n<b>Ответ:</b> {' '.join(d)}", parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
 
                 if call.data == "t10_1":
-                    pass
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t10_1A")
+                    i2 = types.InlineKeyboardButton(text='Решение', callback_data="t10_1R")
+                    mi1.add(i1).add(i2)
+                    phot = open("tmp/Task10/1/task.png", "rb")
+                    docc = open("tmp/Task10/1/10_1.docx", "rb")
+                    bot.send_message(idd, f"Задание 10.1:\n<b>Задания для подготовки 1</b>",
+                                     parse_mode='html')
+                    bot.send_photo(idd, phot)
+                    bot.send_document(idd, docc, reply_markup=mi1)
+                    docc.close()
+                    phot.close()
+                if call.data == "t10_1A":
+                    tb = bot.send_message(idd,
+                                          "Ваш ответ:\n(это должно быть целое число, "
+                                          "запишите его без лишних запятых и знаков. Например: 25)")
+                    bot.register_next_step_handler(tb, t10_1A)
+                if call.data == "t10_1R":
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t10_1A")
+                    mi1.add(i1)
+                    with open("tmp/Task10/1/answer", encoding='utf8') as f:
+                        d = f.read().split()
+                    phot = open('tmp/Task10/1/solution.png', "rb")
+                    bot.send_message(idd, f"<b>Решение</b> задания 10.1\n<b>Ответ:</b> {' '.join(d)}",
+                                     parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
 
                 if call.data == "t10_2":
-                    pass
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t10_2A")
+                    i2 = types.InlineKeyboardButton(text='Решение', callback_data="t10_2R")
+                    mi1.add(i1).add(i2)
+                    phot = open("tmp/Task10/2/task.png", "rb")
+                    docc = open("tmp/Task10/2/10_2.docx", "rb")
+                    bot.send_message(idd, f"Задание 10.2:\n<b>Задания для подготовки 2</b>",
+                                     parse_mode='html')
+                    bot.send_photo(idd, phot)
+                    bot.send_document(idd, docc, reply_markup=mi1)
+                    docc.close()
+                    phot.close()
+                if call.data == "t10_2A":
+                    tb = bot.send_message(idd,
+                                          "Ваш ответ:\n(это должно быть целое число, "
+                                          "запишите его без лишних запятых и знаков. Например: 25)")
+                    bot.register_next_step_handler(tb, t10_2A)
+                if call.data == "t10_2R":
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t10_2A")
+                    mi1.add(i1)
+                    with open("tmp/Task10/2/answer", encoding='utf8') as f:
+                        d = f.read().split()
+                    phot = open('tmp/Task10/2/solution.png', "rb")
+                    bot.send_message(idd, f"<b>Решение</b> задания 10.2\n<b>Ответ:</b> {' '.join(d)}",
+                                     parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
 
                 if call.data == "t10_3":
-                    pass
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t10_3A")
+                    i2 = types.InlineKeyboardButton(text='Решение', callback_data="t10_3R")
+                    mi1.add(i1).add(i2)
+                    phot = open("tmp/Task10/3/task.png", "rb")
+                    docc = open("tmp/Task10/3/10_3.docx", "rb")
+                    bot.send_message(idd, f"Задание 10.3:\n<b>Задания для подготовки </b>",
+                                     parse_mode='html')
+                    bot.send_photo(idd, phot)
+                    bot.send_document(idd, docc, reply_markup=mi1)
+                    docc.close()
+                    phot.close()
+                if call.data == "t10_3A":
+                    tb = bot.send_message(idd,
+                                          "Ваш ответ:\n(это должно быть целое число, "
+                                          "запишите его без лишних запятых и знаков. Например: 25)")
+                    bot.register_next_step_handler(tb, t10_3A)
+                if call.data == "t10_3R":
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t10_3A")
+                    mi1.add(i1)
+                    with open("tmp/Task10/3/answer", encoding='utf8') as f:
+                        d = f.read().split()
+                    phot = open('tmp/Task10/3/solution.png', "rb")
+                    bot.send_message(idd, f"<b>Решение</b> задания 10.3\n<b>Ответ:</b> {' '.join(d)}",
+                                     parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
 
                 if call.data == "t11_1":
-                    pass
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t11_1A")
+                    i2 = types.InlineKeyboardButton(text='Решение', callback_data="t11_1R")
+                    mi1.add(i1).add(i2)
+                    phot = open("tmp/Task11/1/task.png", "rb")
+                    bot.send_message(idd, f"Задание11.1:\n<b>Пароли с дополнительными сведениями</b>",
+                                     parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
+                if call.data == "t11_1A":
+                    tb = bot.send_message(idd,
+                                          "Ваш ответ:\n(это должно быть целое число, "
+                                          "запишите его без лишних запятых и знаков. Например: 25)")
+                    bot.register_next_step_handler(tb, t11_1A)
+                if call.data == "t11_1R":
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t11_1A")
+                    mi1.add(i1)
+                    with open("tmp/Task11/1/answer", encoding='utf8') as f:
+                        d = f.read().split()
+                    phot = open('tmp/Task11/1/solution.png', "rb")
+                    bot.send_message(idd, f"<b>Решение</b> задания 11.1\n<b>Ответ:</b> {' '.join(d)}",
+                                     parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
 
                 if call.data == "t11_2":
-                    pass
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t11_2A")
+                    i2 = types.InlineKeyboardButton(text='Решение', callback_data="t11_2R")
+                    mi1.add(i1).add(i2)
+                    phot = open("tmp/Task11/2/task.png", "rb")
+                    bot.send_message(idd, f"Задание11.2:\n<b>Разное</b>",
+                                     parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
+                if call.data == "t11_2A":
+                    tb = bot.send_message(idd,
+                                          "Ваш ответ:\n(это должно быть целое число, "
+                                          "запишите его без лишних запятых и знаков. Например: 25)")
+                    bot.register_next_step_handler(tb, t11_2A)
+                if call.data == "t11_2R":
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t11_2A")
+                    mi1.add(i1)
+                    with open("tmp/Task11/2/answer", encoding='utf8') as f:
+                        d = f.read().split()
+                    phot = open('tmp/Task11/2/solution.png', "rb")
+                    bot.send_message(idd, f"<b>Решение</b> задания 11.2\n<b>Ответ:</b> {' '.join(d)}",
+                                     parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
 
                 if call.data == "t11_3":
-                    pass
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t11_3A")
+                    i2 = types.InlineKeyboardButton(text='Решение', callback_data="t11_3R")
+                    mi1.add(i1).add(i2)
+                    phot = open("tmp/Task11/3/task.png", "rb")
+                    bot.send_message(idd, f"Задание11.3:\n<b>Номера спортсменов</b>",
+                                     parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
+                if call.data == "t11_3A":
+                    tb = bot.send_message(idd,
+                                          "Ваш ответ:\n(это должно быть целое число, "
+                                          "запишите его без лишних запятых и знаков. Например: 25)")
+                    bot.register_next_step_handler(tb, t11_3A)
+                if call.data == "t11_3R":
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t11_3A")
+                    mi1.add(i1)
+                    with open("tmp/Task11/3/answer", encoding='utf8') as f:
+                        d = f.read().split()
+                    phot = open('tmp/Task11/3/solution.png', "rb")
+                    bot.send_message(idd, f"<b>Решение</b> задания 11.3\n<b>Ответ:</b> {' '.join(d)}",
+                                     parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
 
                 if call.data == "t11_4":
-                    pass
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t11_4A")
+                    i2 = types.InlineKeyboardButton(text='Решение', callback_data="t11_4R")
+                    mi1.add(i1).add(i2)
+                    phot = open("tmp/Task11/4/task.png", "rb")
+                    bot.send_message(idd, f"Задание11.4:\n<b>Автомобильные номера</b>",
+                                     parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
+                if call.data == "t11_4A":
+                    tb = bot.send_message(idd,
+                                          "Ваш ответ:\n(это должно быть целое число, "
+                                          "запишите его без лишних запятых и знаков. Например: 25)")
+                    bot.register_next_step_handler(tb, t11_4A)
+                if call.data == "t11_4R":
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t11_4A")
+                    mi1.add(i1)
+                    with open("tmp/Task11/4/answer", encoding='utf8') as f:
+                        d = f.read().split()
+                    phot = open('tmp/Task11/4/solution.png', "rb")
+                    bot.send_message(idd, f"<b>Решение</b> задания 11.4\n<b>Ответ:</b> {' '.join(d)}",
+                                     parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
 
                 if call.data == "t11_5":
-                    pass
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t11_A")
+                    i2 = types.InlineKeyboardButton(text='Решение', callback_data="t11_5R")
+                    mi1.add(i1).add(i2)
+                    phot = open("tmp/Task11/5/task.png", "rb")
+                    bot.send_message(idd, f"Задание11.5:\n<b>Пароли</b>",
+                                     parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
+                if call.data == "t11_5A":
+                    tb = bot.send_message(idd,
+                                          "Ваш ответ:\n(это должно быть целое число, "
+                                          "запишите его без лишних запятых и знаков. Например: 25)")
+                    bot.register_next_step_handler(tb, t11_5A)
+                if call.data == "t11_5R":
+                    mi1 = types.InlineKeyboardMarkup()
+                    i1 = types.InlineKeyboardButton(text='Ответить', callback_data="t11_5A")
+                    mi1.add(i1)
+                    with open("tmp/Task11/5/answer", encoding='utf8') as f:
+                        d = f.read().split()
+                    phot = open('tmp/Task11/5/solution.png', "rb")
+                    bot.send_message(idd, f"<b>Решение</b> задания 11.5\n<b>Ответ:</b> {' '.join(d)}",
+                                     parse_mode='html')
+                    bot.send_photo(idd, phot, reply_markup=mi1)
+                    phot.close()
 
                 if call.data == "t12_1":
                     pass
@@ -1869,13 +4137,7 @@ Task23,Task24,Task25,Task26,Task27 WHERE User.id = {int(message.from_user.id)}""
 
     @bot.message_handler(content_types='photo')
     def ff(message):
-        con = sqlite3.connect(db_name)
-        cur = con.cursor()
-        command = f"""Select * from Task1"""
-        result = cur.execute(command).fetchall()
-        print(result)
-        con.commit()
-        cur.close()
+        bot.send_message(message.chat.id, message)
 
     bot.polling(none_stop=True)
 
