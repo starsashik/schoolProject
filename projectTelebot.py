@@ -1,3 +1,4 @@
+# Очень важные импорты
 import asyncio
 import hashlib
 import sqlite3
@@ -5,9 +6,11 @@ import sqlite3
 import telebot
 from telebot import types
 
+# константы для использования
 TOKEN = '5314353289:AAEvmoJe10pwcMJKmcsKiSYZb1PCCsYQKv8'
 db_name = "tmp/TeleDB.db"
 
+# Reply клавиатуры
 start_markup = telebot.types.ReplyKeyboardMarkup(resize_keyboard=True)
 start_markup.row("/logIn")
 start_markup.row('/registration')
@@ -37,6 +40,7 @@ task26_markup = telebot.types.ReplyKeyboardMarkup(resize_keyboard=True)
 task26_markup.add("/task26", "/task27").add('/back')
 
 
+# главная фунция в которой работает бот
 async def main():
     bot = telebot.TeleBot(TOKEN)
     con = sqlite3.connect(db_name)
@@ -46,6 +50,7 @@ async def main():
     cur.close()
     dd = {i[0]: False for i in result}
 
+    # функция для началы работы бота
     @bot.message_handler(commands=["start"])
     def start(message):
         mess = f"Привет, <b><u>{message.from_user.username}</u></b>, Я бот помощник для ЕГЭ по информатике.\n" \
@@ -55,20 +60,24 @@ async def main():
                f"Материалы заданий и решений взяты с сайта 'СДАМ ГИА: РЕШУ ЕГЭ':\nhttps://inf-ege.sdamgia.ru",
         bot.send_message(message.chat.id, mess, reply_markup=start_markup, parse_mode='html')
 
+    # функция для вызова файла с инструкцией по использоавнию
     @bot.message_handler(commands=['help'])
     def help(message):
         doc = open("tmp/help.txt", mode="rb")
         bot.send_document(message.chat.id, doc)
         doc.close()
 
+    # функция для скрытия клавиатуры
     @bot.message_handler(commands=['close'])
     def close(message):
         bot.send_message(message.chat.id, "Клавиатура скрыта", reply_markup=telebot.types.ReplyKeyboardRemove())
 
+    # функция для перехода в меню заданий
     @bot.message_handler(commands=['back'])
     def bacc(message):
         bot.send_message(message.chat.id, "Вы вернулись в меню заданий", reply_markup=login_markup, parse_mode='html')
 
+    # функции для регистрации
     @bot.message_handler(commands=["registration"])
     def reg1(message):
         con = sqlite3.connect(db_name)
@@ -152,6 +161,7 @@ async def main():
                          reply_markup=login_markup)
         dd[int(message.from_user.id)] = True
 
+    # функции для входа в систему
     @bot.message_handler(commands=["logIn"])
     def login(message):
         try:
@@ -192,6 +202,7 @@ async def main():
                                               f"Для этого напишите '/' + 'del_acc'",
                              reply_markup=start_markup)
 
+    # функция для выхода из системы
     @bot.message_handler(commands=["logOut"])
     def logout(message):
         try:
@@ -211,6 +222,7 @@ async def main():
                                               f"Для регистрации воспользуйтесь функцией /registration",
                              reply_markup=start_markup)
 
+    # функции для удаления аккаунта
     @bot.message_handler(commands=['del_acc'])
     def del_acc(message):
         idd = message.message_id
@@ -298,6 +310,7 @@ async def main():
         bot.delete_message(message.chat.id, message.message_id - 2)
         bot.delete_message(message.chat.id, message.message_id)
 
+    # функция для отображения топа пользователей
     @bot.message_handler(commands=['top_user'])
     def top_us(message):
         try:
@@ -335,6 +348,7 @@ async def main():
                                               f"Для регистрации воспользуйтесь функцией /registration",
                              reply_markup=start_markup)
 
+    # функция для показа профиля пользователя
     @bot.message_handler(commands=['profile'])
     def prof(message):
         try:
@@ -392,6 +406,7 @@ async def main():
                                               f"Для регистрации воспользуйтесь функцией /registration",
                              reply_markup=start_markup)
 
+    # функции для перехода между блоками заданий
     @bot.message_handler(commands=["1_5"])
     def task1_5(message):
         try:
@@ -506,6 +521,7 @@ async def main():
                                               f"Для регистрации воспользуйтесь функцией /registration",
                              reply_markup=start_markup)
 
+    # функции для вывода заданий
     @bot.message_handler(commands=['task1'])
     def task1(message):
         try:
@@ -1195,23 +1211,7 @@ async def main():
                                               f"Для регистрации воспользуйтесь функцией /registration",
                              reply_markup=start_markup)
 
-    @bot.message_handler(content_types=['text'])
-    def tekst(message):
-        try:
-            current = dd[int(message.from_user.id)]
-            if current:
-                bot.send_message(message.chat.id,
-                                 f"Чтобы приступить к выполнению заданий введите их "
-                                 f"диапозон как показано снизу. \n"
-                                 f"Если вам что-то непонятно /help",
-                                 reply_markup=login_markup)
-            else:
-                bot.send_message(message.chat.id, f"/logIn",
-                                 reply_markup=start_markup)
-        except KeyError:
-            bot.send_message(message.chat.id, f"/start",
-                             reply_markup=start_markup)
-
+    # функции для проверки ответов
     def t1_1A(message):
         with open("tmp/Task1/1/answer", encoding='utf8') as f:
             d = f.readline()
@@ -3971,6 +3971,7 @@ async def main():
         con.commit()
         cur.close()
 
+    # функция для отработки callback"ов (меню заданий)
     @bot.callback_query_handler(func=lambda call: True)
     def task(call):
         idd = call.message.chat.id
@@ -6897,14 +6898,29 @@ async def main():
                                   f"Для регистрации воспользуйтесь функцией /registration",
                              reply_markup=start_markup)
 
+    # функция для шутки над пользователем
     @bot.message_handler(content_types='sticker')
     def fff(message):
         bot.send_sticker(message.chat.id, message.sticker.file_id)
         bot.send_message(message.chat.id, message.sticker.emoji)
 
-    @bot.message_handler(content_types='photo')
-    def ff(message):
-        bot.reply_to("Мне это не нужно")
+    # функция для обработки неизвестных сообщений
+    @bot.message_handler(content_types=['text', 'photo'])
+    def tekst(message):
+        try:
+            current = dd[int(message.from_user.id)]
+            if current:
+                bot.send_message(message.chat.id,
+                                 f"Чтобы приступить к выполнению заданий введите их "
+                                 f"диапозон как показано снизу. \n"
+                                 f"Если вам что-то непонятно /help",
+                                 reply_markup=login_markup)
+            else:
+                bot.send_message(message.chat.id, f"/logIn",
+                                 reply_markup=start_markup)
+        except KeyError:
+            bot.send_message(message.chat.id, f"/start",
+                             reply_markup=start_markup)
 
     bot.polling(none_stop=True)
 
